@@ -22,14 +22,14 @@ $userData = $oAuth->userinfo_v2_me->get();
 
 //here the version with session
 $_SESSION['id'] = $userData['id'];
-echo $oauthUID = $userData['id'];
+$oauthUID = $userData['id'];
 $_SESSION['email'] = $userData['email'];
-echo $email = $userData['email'];
+$email = $userData['email'];
 $_SESSION['gender'] = $userData['gender'];
 $_SESSION['picture'] = $userData['picture'];
 $_SESSION['familyName'] = $userData['familyName'];
 $_SESSION['givenName'] = $userData['givenName'];
-echo $name = ($userData['givenName'] . " " . $userData['familyName']);
+$name = ($userData['givenName'] . " " . $userData['familyName']);
 
 // header('Location: home.php');
 // exit();
@@ -46,19 +46,19 @@ $count = mysqli_num_rows($res);
 
 if ($count == 1) {
 	if ($row['oauth_uid'] == '') {
-		echo "es gibt diese Emailadresse im System, aber ohne OAUTH_uID";
-		echo " ich ergänze die OAUTH_uID. du kannst dich zukünftig mit google ID anmelden";
+		//echo "es gibt diese Emailadresse im System, aber ohne OAUTH_uID";
+		//echo " ich ergänze die OAUTH_uID. du kannst dich zukünftig mit google ID anmelden";
 		$sql = mysqli_query($conn, "UPDATE users SET oauth_uid = '$oauthUID', modified = NOW() WHERE userEmail='$email' ");
 		header("refresh:2; url= ../home.php");
 		exit;
 	} else {
-		echo "hurra, Emailadresse mit OAUTH_uID in DB ";
-		echo "ich logge dich ein! Du wirst in 2 sec weitergeleitet";
+		//echo "<br> hurra, Emailadresse mit OAUTH_uID in DB ";
+		//echo "ich logge dich ein! Du wirst in 2 sec weitergeleitet";
 		header("refresh:2; url= ../home.php");
 		exit;
 	}
 } else {
-	echo "ich lege dich mit Email und OAUTH_uID an und logge dich ein";
+	//echo "ich lege dich mit Email und OAUTH_uID an und logge dich ein";
 	$sql = mysqli_query($conn, "INSERT INTO users (userName, userEmail, oauth_provider, oauth_uid, created ) values ('$name', '$email','google','$oauthUID', NOW()  )");
 	header("refresh:6; url=../home.php");
 	exit;
