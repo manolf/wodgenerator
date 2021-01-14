@@ -1,0 +1,984 @@
+/*
+=============== 
+Global Styles
+===============
+*/
+
+body {
+  font-family: "Fahkwang", sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  margin: 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+.card {
+  margin: 20px 10px 20px 10px;
+  padding: 20px 20px 20px 20px;
+  transition: all 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 600px;
+}
+
+.icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+/*
+  =============== 
+  Navbar
+  ===============
+  */
+
+nav {
+  background-color: rgb(102, 102, 51) !important;
+}
+
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*
+  =============== 
+  JUMBOTRON
+  ===============
+  */
+
+.jumbotron {
+  background: url("./img/kopfleiste_mistel.png") no-repeat center center;
+  /* background: white;  */
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-jumbo {
+  width: 70%;
+}
+
+.header-jumbo {
+  background-color: rgb(153, 0, 0);
+  color: white;
+  padding: 1rem;
+}
+
+.text-jumbo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-center {
+  width: 50%;
+}
+
+/*
+  =============== 
+  INDEX
+  ===============
+  */
+
+#licht {
+  width: 863px;
+  height: 548px;
+}
+
+/* .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  } */
+
+.container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-home {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+}
+
+.container-let {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+}
+
+.table-admin {
+  font-size: 10pt;
+}
+/* 
+  .container-admin {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  } */
+
+.formular:hover {
+  transform: scale(1.05);
+}
+
+.formular {
+  margin: 20px 10px 20px 10px;
+  padding: 20px 20px 20px 20px;
+  transition: all 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+  width: 30%;
+}
+
+/******************************
+  WINDOW-STYLING
+  ******************************/
+
+.container-cal {
+  background-color: rgb(102, 102, 51) !important;
+}
+
+/* .notReady {
+    background-color: white !important;
+  } */
+
+.window {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(153, 0, 0);
+  border-radius: 5%;
+  margin: 1rem;
+  /* color: red; */
+  font-size: 24px;
+  /* -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform; */
+}
+
+.notReady:hover {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transition: 1s;
+}
+
+.clicked {
+  background-color: red;
+  border-radius: 5pt;
+  transition: 1s;
+}
+
+.window.clicked p {
+  color: white;
+  font-size: 12pt;
+}
+
+.bild_beschriftung {
+  position: relative;
+  color: black;
+}
+.caro {
+  display: block;
+  background: red;
+  /* background: rgb(240, 236, 187); */
+  /* background: rgb(211, 25, 25); */
+}
+
+.wod {
+  color: black;
+  position: absolute;
+  left: 5px;
+  top: 30px;
+}
+
+/******************************
+  DAY
+  ******************************/
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.left {
+  width: 66%;
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  border: 1.4pt solid green;
+  border-radius: 5px;
+}
+
+.container-day {
+  /* background: white; */
+  width: 60%;
+  /* border: 1pt solid green; */
+}
+
+.imageElf {
+  object-fit: cover;
+  background: green;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+/*
+  =============== 
+  ERROR
+  ===============
+  */
+
+.container-error {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  width: 507px;
+  height: 250px;
+}
+
+/*
+  =============== 
+  Create Calendar
+  ===============
+  */
+
+.container-warning {
+  display: flex;
+  justify-content: center;
+}
+
+.warning {
+  width: 80%;
+  border: 2pt solid red;
+}
+
+/******************************
+  FOOTER
+  ******************************/
+
+.container-footer {
+  /* background-color: rgb(102, 102, 51) !important; */
+  background-color: rgb(153, 0, 0);
+}
+
+.links a {
+  color: white;
+}
+
+/*
+  =============== 
+  TEAM
+  ===============
+  */
+
+.container-secret {
+  display: flex;
+  justify-content: center;
+}
+
+.secret {
+  width: 80%;
+}
+
+.container-team {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-foto {
+  color: rgb(102, 102, 51) !important;
+}
+
+.warning2 {
+  width: 80%;
+}
+
+/*
+  =============== 
+  Contact
+  ===============
+  */
+
+.container-contact {
+  display: flex;
+  justify-content: space-around;
+}
+.contact-left {
+  width: 40%;
+}
+
+.contact-right {
+  width: 40%;
+}
+
+/*
+  =============== 
+  Calendar
+  ===============
+  */
+.calendar_link {
+  font-family: Arial;
+  font-size: 12px;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  text-underline: none;
+}
+
+.calendar_head {
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  width: 25px;
+}
+
+.calendar_head_month {
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  width: 25px;
+  background-color: #0066ff;
+  color: #ffffff;
+}
+
+.calendar_day {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  width: 25px;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.calendar_entry {
+  font-family: Arial;
+  font-size: 12px;
+  text-align: center;
+}
+
+/*
+  =============== 
+  ANIMATIONS - Slides 
+  ===============
+  */
+
+main {
+  background: transparent;
+  border-color: transparent;
+}
+
+.animation_test {
+  width: 250px;
+  height: 250px;
+  background-color: rgb(102, 102, 51);
+  border: 3pt solid rgb(102, 102, 51);
+}
+
+#gallery {
+  position: relative;
+  background: none;
+  border: none;
+}
+
+#gallery figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#gallery figcaption {
+  position: absolute;
+  left: 1em;
+  font-size: 0.7em;
+  /* font-weight: bold; */
+  bottom: 0.5em;
+  color: black;
+}
+
+@-webkit-keyframes bilder {
+  0% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bilder {
+  0% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#gallery figure:nth-of-type(1) {
+  -webkit-animation: bilder 15s 7s infinite;
+  animation: bilder 15s 7s infinite;
+}
+
+#gallery figure:nth-of-type(2) {
+  -webkit-animation: bilder 15s 2s infinite;
+  animation: bilder 15s 2s infinite;
+}
+
+#gallery figure:nth-of-type(3) {
+  -webkit-animation: bilder 15s 12s infinite;
+  animation: bilder 15s 12s infinite;
+}
+
+@-webkit-keyframes wechseln {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+    z-index: 20;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  34% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0, 0);
+  }
+}
+
+@keyframes wechseln {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+    z-index: 20;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  34% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0, 0);
+  }
+}
+
+#gallery figure:nth-of-type(4) {
+  -webkit-animation: wechseln 15s 10s infinite;
+  animation: wechseln 15s 10s infinite;
+}
+
+#gallery figure:nth-of-type(5) {
+  -webkit-animation: wechseln 15s 5s infinite;
+  animation: wechseln 15s 5s infinite;
+}
+
+#gallery figure:nth-of-type(6) {
+  -webkit-animation: wechseln 15s infinite;
+  animation: wechseln 15s infinite;
+}
+
+/*
+  =============== 
+  MEDIA QUERIES
+  ===============
+  */
+
+@media (max-width: 500px) {
+  .card {
+    min-width: 320px;
+    margin: 20px 10px 20px 0px;
+    padding: 20px 20px 20px 0px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-items: flex-start;
+  }
+
+  /*   .container {
+      padding-left: 0;
+    } */
+
+  /*
+  Navbar
+  */
+
+  .navbar-left {
+    display: none;
+  }
+
+  /*
+  Jumbotron start
+  */
+
+  .jumbotron {
+    background-size: 200% 100%;
+  }
+
+  .container-jumbo {
+    width: 100%;
+  }
+
+  .header-jumbo {
+    font-size: 1.2rem;
+    padding: 0;
+  }
+
+  .text-center {
+    width: 80%;
+    font-size: 0.9rem;
+  }
+
+  /*
+  index
+  */
+
+  #licht {
+    width: 480px;
+    height: 304px;
+  }
+
+  .container {
+    border: none;
+  }
+
+  .container-day {
+    /* background: white; */
+    width: 100%;
+    border: none;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;
+    border: none;
+  }
+
+  /*
+  WINDOW-STYLING START
+  ***/
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .window {
+    width: 90px;
+    height: 90px;
+  }
+
+  .caro {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .window.clicked p {
+    color: white;
+    font-size: 10pt;
+    margin: 0.5rem;
+  }
+
+  .erst {
+    color: black;
+    position: absolute;
+    left: 5px;
+    top: 2px;
+  }
+
+  .wod {
+    color: black;
+    position: absolute;
+    left: 5px;
+    top: 15px;
+  }
+
+  /* Warnhinweis*/
+  .text-warn {
+    font-size: 1rem !important;
+  }
+
+  /******************************
+  FOOTER
+  ******************************/
+  .footer-left {
+    display: none;
+  }
+  .footer-right {
+    display: none;
+  }
+  .warning {
+    width: 100%;
+  }
+  .warning2 {
+    width: 100%;
+  }
+
+  /*
+  =============== 
+  TEAM
+  ===============
+  */
+
+  .container-team {
+    flex-wrap: wrap;
+  }
+
+  .secret {
+    width: 100%;
+  }
+
+  /*
+  =============== 
+  Contact
+  ===============
+  */
+  .container-contact {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contact-left {
+    width: 100%;
+  }
+
+  .contact-right {
+    width: 100%;
+    margin-left: 1rem;
+  }
+  .error {
+    width: 405px;
+    height: 200px;
+  }
+
+  /***************************** 
+    Kästchen 24
+    ******************************/
+
+  #playground2 {
+    display: block;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    animation: 2s 1 slidein;
+    color: white;
+    font-size: 60px;
+    position: absolute;
+    top: 0px;
+    left: 30%;
+  }
+
+  #playground2:hover {
+    color: red;
+  }
+
+  #playground {
+    display: none;
+  }
+
+  #hanno24 {
+    width: 360px;
+    height: 701px;
+    position: absolute;
+    top: 570px;
+    left: 0;
+  }
+
+  #rudolfo {
+    width: 360px;
+    height: 232px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+  }
+
+  #elftree {
+    width: 360px;
+    height: 280px;
+    position: absolute;
+    top: 290px;
+    left: 0;
+  }
+
+  #danke {
+    width: 360px;
+    height: 266px;
+    position: absolute;
+    top: 1300px;
+    left: 0;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  .card {
+    max-width: 320px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /*
+  Jumbotron start
+  */
+
+  .jumbotron {
+    background-size: 150% 80%;
+  }
+
+  .container-jumbo {
+    width: 100%;
+  }
+
+  .header-jumbo {
+    font-size: 1.2rem;
+    padding: 1;
+  }
+
+  .text-center {
+    width: 50%;
+    font-size: 1.2rem;
+  }
+  /*
+  Jumbotron end
+  */
+
+  /*
+  index
+  */
+
+  #licht {
+    width: 480px;
+    height: 304px;
+  }
+
+  /*
+  day
+  */
+
+  .container {
+    border: none;
+  }
+
+  .container-day {
+    /* background: white; */
+    width: 100%;
+    border: none;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;
+    border: none;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /******************************
+  FOOTER
+  ******************************/
+  .footer-left {
+    display: none;
+  }
+  .footer-right {
+    display: none;
+  }
+  /* .warning {
+      width: 100%;
+    } */
+
+  /*
+  =============== 
+  TEAM
+  ===============
+  */
+
+  .container-team {
+    flex-wrap: wrap;
+  }
+
+  /*
+  =============== 
+  Contact
+  ===============
+  */
+  .container-contact {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contact-left {
+    width: 100%;
+  }
+
+  .contact-right {
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  /***************************** 
+    Kästchen 24
+    ******************************/
+
+  #playground2 {
+    display: block;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    animation: 2s 1 slidein;
+    color: white;
+    font-size: 60px;
+    position: absolute;
+    top: 0px;
+    left: 30%;
+  }
+
+  #playground2:hover {
+    color: red;
+  }
+
+  #playground {
+    display: none;
+  }
+
+  #hanno24 {
+    width: 283px;
+    height: 552px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+  }
+
+  #rudolfo {
+    width: 360px;
+    height: 232px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+  }
+
+  #elftree {
+    width: 360px;
+    height: 280px;
+    position: absolute;
+    top: 290px;
+    left: 30%;
+  }
+
+  #danke {
+    width: 212px;
+    height: 157px;
+    position: absolute;
+    top: 390px;
+    left: 70%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1500px) {
+  /*
+  =============== 
+  TEAM
+  ===============
+  */
+
+  .container-team {
+    flex-wrap: wrap;
+  }
+
+  .secret {
+    width: 100%;
+  }
+
+  #hanno24 {
+    width: 283px;
+    height: 552px;
+    left: 5%;
+  }
+
+  #rudolfo {
+    width: 466px;
+    height: 300px;
+  }
+
+  #elftree {
+    width: 370px;
+    height: 287px;
+    top: 260px;
+    left: 35%;
+  }
+
+  #playground {
+    font-size: 40px;
+    left: 35%;
+  }
+
+  #danke {
+    top: 320px;
+    left: 70%;
+    width: 243px;
+    height: 180px;
+  }
+}
