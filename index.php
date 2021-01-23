@@ -1,11 +1,23 @@
 <?php
-include('navbar.php');
+
+// include('./workouts/navbarWod.php');
 // include('jumbotron.php');
 
-// ob_start();
-// session_start();
-// require_once 'config.php';
+ob_start();
+session_start();
+require_once 'config.php';
 
+if (isset($_SESSION["user"])) {
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+}
+
+if (isset($_SESSION['access_token'])) {
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE oauth_uid=" . $_SESSION['id']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+}
+
+include('navbar.php');
 
 ?>
 
@@ -47,24 +59,30 @@ include('navbar.php');
 
                         <h3 class="font-weight-bold mb-4"> Willkommen...</i> </h3>
 
-                        <br>
 
-                        <p>..hast du dich je gefragt, was die Elfen außerhalb der Weihnachtssaison so treiben? <br><br>So ganz genau werden wir es wohl nie erfahren - aber zumindest einer unter ihnen lässt uns ein bisschen daran Anteil haben: <strong>Hanno</strong> hat sich dazu entschlossen, auch übers Jahr fleißig zu trainieren, um seinen Platz bei der Weihnachtsbrigade zu sichern! </p>
 
-                        <br>
-                        Um seiner neuen sportlichen Begeisterung den Weg zu ebnen gibt es nun folgende <strong> neue Features </strong> auf unserer Seite:
+                        <p>..hast du dich je gefragt, was die Elfen außerhalb der Weihnachtssaison so treiben? <br>So ganz genau werden wir es wohl nie erfahren - aber einer von ihnen lässt uns ein bisschen daran Anteil haben: <br><br> <strong>Hanno</strong> hat sich dazu entschlossen, auch unterm Jahr fleißig zu trainieren, um seinen Platz bei der Weihnachtsbrigade zu sichern! </p>
+
+
+                        Um seiner neuen sportlichen Begeisterung den Weg zu ebnen gibt es nun folgendes <strong> neues Features </strong> auf unserer Seite:
                         <ul>
-
                             <li> <a href="./workouts/wod.php">Workoutgenerator</a></li>
-                            <li><a href="./diary/diary.php">Trainingstagebuch</a></li>
                         </ul>
 
-                        Diese kannst du kostenlos als eingeloggter User nutzen.<br>
-                        <a href="./registration/login.php" type="button" class="btn btn-primary btn-lg mt-4">LOGIN</a>
+                        Hol dir dein maßgeschneidertes Wod! <br>
 
                         <!-- <p> Sei dabei und begleite Hanno auf seinem sportlichen Weg durchs Jahr!</p> -->
 
+                        Für eingeloggte UserInnen planen wir außerdem ein
+                        <ul>
+                            <!-- <li> <a href="./workouts/wod.php">Workoutgenerator</a></li> -->
+                            <li><a href="./diary/diary.php">Trainingstagebuch.</a></li>
+                        </ul>
 
+                        Dies alles kannst du kostenlos nutzen!
+
+                        <!-- <a href="./registration/login.php" type="button" class="btn btn-primary btn-lg mt-4">LOGIN</a>
+ -->
 
 
                     </div>

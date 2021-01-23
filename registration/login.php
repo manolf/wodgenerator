@@ -112,7 +112,7 @@ $loginURL = $gClient->createAuthUrl();
         <div class="row justify-content-center">
             <div class="col-md-6 col-offset-3" align="center">
 
-                <img src="../images/logo.png"><br><br>
+                <img src="../images/logo4.png"><br><br>
 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                     <input type="email" placeholder="Email..." name="email" class="form-control" value="<?php echo $email; ?>" maxlength="40"><br>
@@ -120,7 +120,7 @@ $loginURL = $gClient->createAuthUrl();
                     <span class="text-danger"><?php echo $passError; ?></span>
                     <hr />
                     <input type="submit" value="Log In" class="btn btn-primary" name="btn-login">
-                    <input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Log In With Google" class="btn btn-danger">
+                    <input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Log In with Google" class="btn btn-danger">
 
                     <hr>
                     <div align="left"> <a href="register.php">Registrieren... </a></div>
@@ -130,6 +130,13 @@ $loginURL = $gClient->createAuthUrl();
             </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <?php
     include('../footer.php');

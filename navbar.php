@@ -14,7 +14,7 @@
 
 
 
-    <nav class="navbar sticky-top navbar navbar-expand-sm navbar-dark" style="background-color: rgb(102, 102, 51)">
+    <nav class="navbar sticky-top navbar navbar-expand-sm" style="background-color: rgb(255, 196, 0); font-weight: bold;">
 
         <button class="navbar-toggler navbar-toggler-left btn-lg" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,26 +53,68 @@
                     <a class="nav-link" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:white"><i class="fa fa-instagram"></i></a>
                 </li>
 
+                <?php
+                if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
+
+                ?>
+
+
+                    <li class="nav-item bg-light rounded">
+                        <a class="nav-link " href="home.php">myHanno</a>
+                    </li>
+                <?php
+                }
+
+                ?>
+
 
             </ul>
 
-            <div class="navbar-right">
-                <ul class="navbar-nav">
+            <?php
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="./registration/login.php">login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="./registration/register.php">signup</a>
-                    </li>
-                    <!-- <div class="image">
+
+
+            if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
+
+            ?>
+
+                <div class="navbar-right">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <?php
+                            echo $userRow['userEmail'] . '&nbsp'; ?>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./registration/logout.php?logout">logout</a>
+                        </li>
+                    <?php
+                } else {
+
+                    ?>
+
+
+                        <div class="navbar-right">
+                            <ul class="navbar-nav">
+
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./registration/login.php">login/signup</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link " href="./registration/register.php">signup</a>
+                                </li> -->
+                                <!-- <div class="image">
                         <#?php echo $userRow['userName']; ?> -->
-                    <!-- <img class="icon" src="images/icon/<#?php echo $userRow['foto']; ?>" /> -->
-                    <!-- </div> -->
-                </ul>
-            </div>
+                                <!-- <img class="icon" src="images/icon/<#?php echo $userRow['foto']; ?>" /> -->
+                                <!-- </div> -->
+                            </ul>
+                        </div>
 
-        </div>
+                    <?php
+
+                }
+                    ?>
+
+                </div>
 
     </nav>
 

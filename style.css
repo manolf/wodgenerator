@@ -11,7 +11,7 @@ body {
   margin: 0;
 }
 
-.card:hover {
+/* .card:hover {
   transform: scale(1.05);
 }
 .card {
@@ -21,7 +21,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 600px;
-}
+} */
 
 .icon {
   width: 70px;
@@ -29,14 +29,31 @@ body {
   border-radius: 50%;
 }
 
+.button_bee {
+  background-color: black;
+  color: rgb(255, 196, 0);
+  font-weight: bold;
+}
+
 /*
   =============== 
   Navbar
   ===============
   */
+.navbar {
+  background-color: rgb(255, 196, 0);
+  color: black;
+}
 
 nav {
-  background-color: rgb(102, 102, 51) !important;
+  /* background-color: rgb(102, 102, 51) !important; */
+  background-color: black;
+  color: rgb(255, 196, 0);
+  font-weight: bold;
+}
+
+nav li a {
+  color: black;
 }
 
 .container-nav {
@@ -55,33 +72,6 @@ nav {
   JUMBOTRON
   ===============
   */
-
-.jumbotron {
-  background: url("./img/kopfleiste_mistel.png") no-repeat center center;
-  /* background: white;  */
-  background-size: 100% 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.container-jumbo {
-  width: 70%;
-}
-
-.header-jumbo {
-  background-color: rgb(153, 0, 0);
-  color: white;
-  padding: 1rem;
-}
-
-.text-jumbo {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.text-center {
-  width: 50%;
-}
 
 /*
   =============== 
@@ -139,109 +129,6 @@ nav {
   transition: all 0.5s;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
   width: 30%;
-}
-
-/******************************
-  WINDOW-STYLING
-  ******************************/
-
-.container-cal {
-  background-color: rgb(102, 102, 51) !important;
-}
-
-/* .notReady {
-    background-color: white !important;
-  } */
-
-.window {
-  width: 150px;
-  height: 150px;
-  background-color: rgb(153, 0, 0);
-  border-radius: 5%;
-  margin: 1rem;
-  /* color: red; */
-  font-size: 24px;
-  /* -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    transition-duration: 1s;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    transition-property: transform; */
-}
-
-.notReady:hover {
-  transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transition: 1s;
-}
-
-.clicked {
-  background-color: red;
-  border-radius: 5pt;
-  transition: 1s;
-}
-
-.window.clicked p {
-  color: white;
-  font-size: 12pt;
-}
-
-.bild_beschriftung {
-  position: relative;
-  color: black;
-}
-.caro {
-  display: block;
-  background: red;
-  /* background: rgb(240, 236, 187); */
-  /* background: rgb(211, 25, 25); */
-}
-
-.wod {
-  color: black;
-  position: absolute;
-  left: 5px;
-  top: 30px;
-}
-
-/******************************
-  DAY
-  ******************************/
-
-.wrapper {
-  display: flex;
-  justify-content: space-around;
-}
-
-.left {
-  width: 66%;
-  display: flex;
-  align-items: center;
-}
-
-.right {
-  width: 33%;
-  display: flex;
-  align-items: center;
-  border: 1.4pt solid green;
-  border-radius: 5px;
-}
-
-.container-day {
-  /* background: white; */
-  width: 60%;
-  /* border: 1pt solid green; */
-}
-
-.imageElf {
-  object-fit: cover;
-  background: green;
-  width: 50%;
-  display: flex;
-  justify-content: center;
 }
 
 /*
@@ -340,47 +227,56 @@ nav {
   Calendar
   ===============
   */
-.calendar_link {
-  font-family: Arial;
-  font-size: 12px;
-  text-align: center;
-  color: #000000;
-  text-decoration: none;
-  text-underline: none;
+
+/*
+  =============== 
+  singleWod
+  ===============
+  */
+
+.container_single {
+  display: flex;
+  border: 1pt single black;
 }
 
-.calendar_head {
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  width: 25px;
+/* .left {
+  width: 40%;
+  border: 1pt single green;
+} */
+
+.right {
+  width: 40%;
+  border: 2pt solid olive;
+  border-radius: 5px;
 }
 
-.calendar_head_month {
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  width: 25px;
-  background-color: #0066ff;
-  color: #ffffff;
+/*
+  =============== 
+  Workout
+  ===============
+  */
+
+.container_wod {
+  display: flex;
+  justify-content: space-between;
+  border: 1pt solid green;
+  border-radius: 1%;
 }
 
-.calendar_day {
-  font-family: Arial;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  width: 25px;
-  color: #ffffff;
-  background-color: #000000;
+.wod_left {
+  width: 50%;
 }
 
-.calendar_entry {
-  font-family: Arial;
-  font-size: 12px;
-  text-align: center;
+.wod_right {
+  width: 40%;
+}
+
+.container_genwod {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 1pt solid green;
+  border-radius: 1%;
 }
 
 /*
@@ -388,139 +284,6 @@ nav {
   ANIMATIONS - Slides 
   ===============
   */
-
-main {
-  background: transparent;
-  border-color: transparent;
-}
-
-.animation_test {
-  width: 250px;
-  height: 250px;
-  background-color: rgb(102, 102, 51);
-  border: 3pt solid rgb(102, 102, 51);
-}
-
-#gallery {
-  position: relative;
-  background: none;
-  border: none;
-}
-
-#gallery figure {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#gallery figcaption {
-  position: absolute;
-  left: 1em;
-  font-size: 0.7em;
-  /* font-weight: bold; */
-  bottom: 0.5em;
-  color: black;
-}
-
-@-webkit-keyframes bilder {
-  0% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 1;
-  }
-  35% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes bilder {
-  0% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 1;
-  }
-  35% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-#gallery figure:nth-of-type(1) {
-  -webkit-animation: bilder 15s 7s infinite;
-  animation: bilder 15s 7s infinite;
-}
-
-#gallery figure:nth-of-type(2) {
-  -webkit-animation: bilder 15s 2s infinite;
-  animation: bilder 15s 2s infinite;
-}
-
-#gallery figure:nth-of-type(3) {
-  -webkit-animation: bilder 15s 12s infinite;
-  animation: bilder 15s 12s infinite;
-}
-
-@-webkit-keyframes wechseln {
-  0% {
-    opacity: 1;
-    transform: scale(1, 1);
-    z-index: 20;
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-  34% {
-    opacity: 0;
-    transform: scale(0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(0, 0);
-  }
-}
-
-@keyframes wechseln {
-  0% {
-    opacity: 1;
-    transform: scale(1, 1);
-    z-index: 20;
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-  34% {
-    opacity: 0;
-    transform: scale(0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(0, 0);
-  }
-}
-
-#gallery figure:nth-of-type(4) {
-  -webkit-animation: wechseln 15s 10s infinite;
-  animation: wechseln 15s 10s infinite;
-}
-
-#gallery figure:nth-of-type(5) {
-  -webkit-animation: wechseln 15s 5s infinite;
-  animation: wechseln 15s 5s infinite;
-}
-
-#gallery figure:nth-of-type(6) {
-  -webkit-animation: wechseln 15s infinite;
-  animation: wechseln 15s infinite;
-}
 
 /*
   =============== 
