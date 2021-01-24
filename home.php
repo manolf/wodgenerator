@@ -5,23 +5,10 @@ require_once 'config.php';
 
 if ((!isset($_SESSION['user'])) && (!isset($_SESSION['access_token']))) {
 
-    // header("Location: index.php");
+    header("Location: index.php");
     exit;
 }
 
-
-
-// if session is not set this will redirect to login page
-
-// if (isset($_SESSION["admin"])) {
-//     header("Location: admin.php");
-//     exit;
-// }
-
-// if ((!isset($_SESSION['user'])) || (!isset($_SESSION['access_token']))) {
-//     header("Location: index.php");
-//     exit;
-// }
 
 if (isset($_SESSION["user"])) {
     $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
@@ -32,68 +19,13 @@ if (isset($_SESSION["user"])) {
     // echo "<h3> userId: " .  $userId . "</h3>";
     // echo "<br> Test END";
 }
-// select logged-in users details
-// $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
-// $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+
 
 if (isset($_SESSION['access_token'])) {
 
-?>
-
-    <!-- <h2>Welcome <?php echo $_SESSION['givenName'] . " " . $_SESSION['familyName'] . " ," . $_SESSION['email']; ?>!</h2>
-    <div class="container" style="margin-top: 100px">
-
-        <div class="row">
-            <div class="col-md-3">
-                <img style="width: 5%;" src="<?php echo $_SESSION['picture'] ?>">
-            </div>
-
-            <div class="col-md-9">
-                <table class="table table-hover table-bordered">
-                    <tbody>
-                        <tr>
-                            <td>ID</td>
-                            <td><?php echo $_SESSION['id'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>First Name</td>
-                            <td><?php echo $_SESSION['givenName'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name</td>
-                            <td><?php echo $_SESSION['familyName'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td><?php echo $_SESSION['email'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td><?php echo $_SESSION['gender'] ?></td>
-                        </tr>
-
-                        <tr>
-                            <td>UserId</td>
-                            <td><?php echo $userRow['userId'] ?></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> -->
-
-<?php
-    // echo $sessionId;
     $res = mysqli_query($conn, "SELECT * FROM users WHERE oauth_uid=" . $_SESSION['id']);
     $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    // echo "<br> userID: ";
-    // echo $userRow['userId'];
-    // echo "<br> TEST LOGIN Google <br>";
-    // echo     "<h2> Welcome " .  $userRow['userName'] . "</h2>";
-    // $userId =  $userRow['userId'];
-    // echo "<h3> userId: " .  $userId . "</h3>";
-    // echo "<br> Test END";
 }
 
 include('navbar.php');
@@ -166,10 +98,6 @@ include('navbar.php');
                 <input type="text" class="form-control mb-3" name="wodName" placeholder="Name Workout" />
 
                 <label for="equipment" class="mr-3">Equipment: </label>
-                <!-- <input type="text" class="form-control mb-3" name="equipment" placeholder="Equipment OLD!.. zum Bsp: bodyweight, Dumbbell, Springschnur.." />
-
-                <h5 class="pt-3 pb-1">Equipment:</h5> -->
-
 
                 <select name='equipment'>
 
@@ -216,7 +144,7 @@ ORDER BY `equiSetId` ASC";
                         $e4 = $row['equiPart4'];
 
 
-                        //echo "<option> $row[authorID] $row['firstname'] | $row ['lastname']</option>";
+
                         echo "<option value= $equiSetId name= 'equipment' class='form-control'> $equiSetId $e1 $e2 $e3 $e4</option>";
                     }
                     echo "</select>";
@@ -260,8 +188,6 @@ ORDER BY `equiSetId` ASC";
                 <!-- <input type="hidden" name="userId" value="<?php echo $data['wodId'] ?>" /> -->
 
                 <input class="form-control btn btn-outline-success mt-3 mb-3" type="submit" name="submit" value="Add Workout" />
-
-                <!-- <a href="admin.php" class="btn btn-block btn-outline-warning">Back</a> -->
 
             </div>
 
@@ -359,49 +285,7 @@ ORDER BY `equiSetId` ASC";
 
 
     <hr>
-    <!-- <h3>Testgif Orsi</h3>
 
-    <img src="./images/testgif-fast.gif" alt="testgif fast" style="width: 414px; height:414px; border: 1pt dotted grey">
-    <img src="./images/testgif.gif" alt="testgif fast" style=" width: 414px; height:414px;  border: 1pt dotted lime">
-
-    <br>
-    <br>
-
-    <hr>
-
-    <div class="center">
-        <h3>Versuch: timed animation mit Slider </h3>
-
-        <main>
-            <div id="gallery">
-
-                <figure>
-                    <img class="animation_test" src="./images/icon/rudolf_glasses.png" alt="pause">
-                    <figcaption>geschafft! Wod over</figcaption>
-                </figure>
-                <figure>
-                    <img class="animation_test" src="./images/testgif.gif" alt="abends">
-                    <figcaption>5 sec langsames Armheben</figcaption>
-                </figure>
-                <figure>
-                    <img class="animation_test" src="./images/icon/icon_zuckerstangl.png" alt="pause">
-                    <figcaption>Start Wod in 5 Sekunden </figcaption>
-                </figure>
-                <figure>
-                    <img class="animation_test" src="./images/icon/rudolf_glasses.png" alt="pause">
-                    <figcaption>geschafft! Wod over</figcaption>
-                </figure>
-                <figure>
-                    <img class="animation_test" src="./images/testgif.gif" alt="abends">
-                    <figcaption>5 sec langsames Armheben</figcaption>
-                </figure>
-                <figure>
-                    <img class="animation_test" src="./images/icon/icon_zuckerstangl.png" alt="pause">
-                    <figcaption>Start Wod in 5 Sekunden </figcaption>
-                </figure>
-            </div>
-        </main>
-    </div> -->
     <br>
     <br>
     <br>

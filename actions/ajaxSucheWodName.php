@@ -1,31 +1,23 @@
 <?php
 // Verbindung
-$server = "localhost";
-$benutzername = "root";
-$passwort = "";
-$datenbank = "xmas";
 
-// Server Verbindung herstellen
-$conn = mysqli_connect($server, $benutzername, $passwort, $datenbank) or
-    die("Keine Verbindung moeglich");
+require_once '../config.php';
 
-// Datenbank Verbidung
-// mysqli_select_db($datenbank) or
-// die ("Die Datenbank existiert nicht");
-
-$tabelle = "wod";
 
 if ($_POST["suchbegriff"]) {
-    // Mysql Abfrage wird gespeichert mit den Notwendigen Parameter
-    // $sql = "SELECT * FROM ".$tabelle." WHERE wodName LIKE ('%".mysql_real_escape_string(utf8_decode($_POST["suchbegriff"]))."%')";
 
-    $sql = "SELECT * FROM " . $tabelle . " WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')";
+    $sql = "select * from wod
+	inner join users on wod.userId = users.userId
+    WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')";
+
+    // $sql = "SELECT * FROM wod 
+    // WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')";
 
     // Mysql Abfrage wird durchgeführt
     $result = mysqli_query($conn, $sql);
 
     // Suchbegriff wird ausgegeben
-    echo "Sie suchten nach: " . $_POST["suchbegriff"] . "<br/><br/>";
+    echo "Suche nach WorkoutName: " . $_POST["suchbegriff"] . "<br/><br/>";
     echo "<div class='container_genwod'>";
 
     // Ergebnis wird ausgegeben mit Zeilenumbruch
@@ -42,6 +34,7 @@ if ($_POST["suchbegriff"]) {
         $link = $fetch['link'];
         $pic = '../images/icon/elefant.jpg';
         $cat = 'secondary';
+        $user = $fetch['userName'];
 
         switch ($difficulty) {
             case 'easy':
@@ -75,7 +68,7 @@ if ($_POST["suchbegriff"]) {
                 $pic = '../images/icon/ringrows.png';
                 break;
             case 5:
-                $pic = '../images/icon/kb_clean.png';
+                $pic = '../images/icon/dumbbell.png';
                 break;
             case 6:
                 $pic = '../images/icon/snatch.png';
@@ -104,6 +97,7 @@ if ($_POST["suchbegriff"]) {
                 <h4 class="card-title"><?php echo $name; ?></h4>
                 <p class="card-text">Dauer: <?php echo $durationInMinutes; ?> Minuten</p>
                 <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
+                <p class="card-text">von user <?php echo $user; ?> </p>
                 <p class="card-text">Rating:</p>
                 <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn btn-primary"> Zum Workout</a>
             </div>

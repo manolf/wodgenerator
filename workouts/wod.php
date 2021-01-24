@@ -11,6 +11,8 @@ if (isset($_SESSION["user"])) {
 
 if (isset($_SESSION['access_token'])) {
     $res = mysqli_query($conn, "SELECT * FROM users WHERE oauth_uid=" . $_SESSION['id']);
+    $count = mysqli_num_rows($res);
+
     $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 }
 
@@ -227,85 +229,25 @@ include('navbarWod.php');
                                 <input type="text" placeholder="Name Mitglied" name="userName" class="form-control" onkeyup="searchForUserName(this.value);"><br>
 
                                 <hr>
-                                <input class="form-control btn btn-dark mt-4" type="submit" name="submit" value="Überrascht mich!" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;" />
+
+                                <?php
+                                $wodId = 11;
+
+                                $res3 = mysqli_query($conn, "SELECT MAX(wodId) FROM wod");
+                                $userRow = mysqli_fetch_array($res3, MYSQLI_ASSOC);
+
+                                $maxWod = $userRow['MAX(wodId)'];
+
+                                $maxWod = rand(1, $maxWod);
+
+                                ?>
+
+                                <a href="../workouts/singleWod.php?wodId=<?php echo $maxWod; ?>" class="form-control btn btn-dark mt-4" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;"> Überrascht mich!</a>
 
 
                             </div>
                         </div>
 
-                        <!-- <h2>OUTPUT</h2>
-
-                        <div class="containerAdmin">
-
-                            <table class="table">
-                                <thead class="thead-dark" style="position: sticky;top: 0">
-                                    <tr>
-                                        <th class="header" scope=" col">WodName</th>
-                                        <th class="header" scope="col">Equipment</th>
-                                        <th class="header" scope="col">Equpmt New</th>
-                                        <th class="header" scope="col">Trained Parts</th>
-                                        <th class="header" scope="col">Beschreibung</th>
-                                        <th class="header" scope="col">Link</th>
-                                        <th class="header" scope="col">Min</th>
-                                        <th class="header" scope="col">Level</th>
-                                        <th class="header" scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <#?php
-                                    // count total number of rows
-                                    $sql = "SELECT COUNT(*) AS cntrows FROM wod";
-                                    $result = mysqli_query($conn, $sql);
-                                    $fetchresult = mysqli_fetch_array($result);
-                                    $allcount = $fetchresult['cntrows'];
-
-                                    // selecting rows
-                                    $sql = "SELECT * FROM wod ORDER BY wodId ASC limit $row," . $rowperpage;
-                                    $result = mysqli_query($conn, $sql);
-                                    $sno = $row + 1;
-
-                                    // while ($row = mysqli_fetch_assoc($result)) {
-                                    while ($fetch = mysqli_fetch_array($result)) {
-
-                                        $wodId = $fetch['wodId'];
-                                        $name = $fetch['wodName'];
-                                        $equipment = $fetch['equipment'];
-                                        $equiSetId = $fetch['equiSetId'];
-                                        $trainedParts = $fetch['trainedParts'];
-                                        $description = $fetch['description'];
-                                        $durationInMinutes = $fetch['durationInMinutes'];
-                                        $difficulty = $fetch['difficulty'];
-                                        $link = $fetch['link'];
-
-
-
-                                        echo "<tr class='$difficulty'>";
-                                        echo "<td class='table-admin'>$sno : $name </td>";
-                                        echo "<td class='table-admin'>$equipment</td>";
-                                        echo "<td class='table-admin'>$equiSetId</td>";
-                                        echo "<td class='table-admin'>$trainedParts</td>";
-                                        echo "<td class='table-admin'>$description</td>";
-                                        echo "<td class='table-admin'>$link</td>";
-                                        echo "<td class='table-admin'>$durationInMinutes</td>";
-                                        echo "<td class='table-admin'>$difficulty</td> ";
-                                        // echo "<td class='table-admin'>$points</td>";
-                                        echo "<td><a href='delete.php?wodId=$wodId' class='btn btn-outline-danger btn-sm'>Delete </a> 
-                               <a href='update.php?wodId=$wodId' class='btn btn-outline-secondary btn-sm'>Update </a>
-                               <a href='preview.php?wodId=$wodId' target='_blank' class='btn btn-outline-info btn-sm'>Preview </a>
-                     </td>";
-                                        echo "</tr> ";
-                                        $sno++;
-
-                                    ?>
-                                </tbody>
-                            <#?php
-
-                                    }
-                            ?>
-                            </table>
-
-                            <h2>Output Ende</h2> -->
 
                         <div id="ergebnis"></div>
 
@@ -313,7 +255,7 @@ include('navbarWod.php');
                         <p>Als eingeloggter User kannst du übrigens unter <strong>myHanno</strong> noch folgende Features nutzen:</p>
 
                         <strong>Absolvierte Workouts in deinen eigenen Kalender speichern</strong>
-                        <p>Damit hast du einen guten Überblick über deine sportliche Vergangenheit!</p>
+                        <p>Damit hast du einen guten Überblick über deine Sportlichkeit!</p>
 
                         <strong>Eigene Workouts erstellen</strong>
                         <p>Hier kannst du deine eigenen Workouts eintragen und speichern!</p>

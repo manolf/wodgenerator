@@ -61,8 +61,10 @@ if ($_GET['wodId']) {
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome - <?php echo $userRow['userEmail']; ?></title>
     <link rel="stylesheet" type="text/css" href="../style.css">
+
 </head>
 
 <body>
@@ -152,7 +154,9 @@ if ($_GET['wodId']) {
         </div>
     </div>
 
-
+    <?php
+    include('../footer.php');
+    ?>
 
 </body>
 
