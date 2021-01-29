@@ -9,7 +9,7 @@
 
 
     <!-- Footer -->
-    <footer class="page-footer bg-secondary py-1 text-white">
+    <footer class="page-footer py-1 text-white">
 
         <!-- Footer Elements -->
         <div class="container-footer">
@@ -50,9 +50,10 @@
                             <a class="mx-3" role="button"><i class="fa fa-facebook-f"></i></a>
                         </li> -->
                         <li>
-
                             <a class="mx-3" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:white"><i class="fa fa-instagram"></i></a>
                         </li>
+
+
                     </ul>
                 </div>
             </div>

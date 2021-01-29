@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         <div class="container-nav collapse navbar-collapse" id="navbarTogglerDemo02">
 
             <div class="navbar-left">
-                <img class="icon border" src="images/icon/rudolf_glasses.png" />
+                <img class="icon border" src="images/vector_logo_sw.svg" />
 
             </div>
 
@@ -37,6 +38,19 @@
                     <a class="nav-link " href="./workouts/wod.php">workouts</a>
                 </li>
 
+                <?php
+                if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
+
+                ?>
+
+                    <li class="nav-item bg-light rounded">
+                        <a class="nav-link " href="home.php">myHanno</a>
+                    </li>
+                <?php
+                }
+
+                ?>
+
                 <li class="nav-item">
                     <a class="nav-link " href="./diary/diary.php">tagebuch</a>
                 </li>
@@ -49,23 +63,13 @@
                     <a class="nav-link " href="contact.php">kontakt</a>
                 </li>
 
+
+
                 <li class="nav-item">
-                    <a class="nav-link" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:white"><i class="fa fa-instagram"></i></a>
+                    <a class="nav-link" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:black"><i class="fa fa-instagram"></i></a>
                 </li>
 
-                <?php
-                if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
 
-                ?>
-
-
-                    <li class="nav-item bg-light rounded">
-                        <a class="nav-link " href="home.php">myHanno</a>
-                    </li>
-                <?php
-                }
-
-                ?>
 
 
             </ul>

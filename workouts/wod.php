@@ -71,24 +71,24 @@ include('navbarWod.php');
 
                         <br><br>
 
-                        <h1 class="text-secondary">Workout-Generator</h1>
+                        <h1>Workout-Generator</h1>
                         <div class="container_wod">
 
                             <div class="wod_left p-2">
 
                                 <form action="../actions/generateWod.php" method='post'>
-                                    <h3 class="font-weight-bold pb-3"> <br>Workout in Datenbank suchen </h3>
+                                    <h3 class="pb-3"> <br>Workout suchen </h3>
 
                                     <div class="form-group">
                                         <h5 class="pb-1">LEVEL:</h5>
                                         <select name='difficulty' id='level'>
                                             <option> -- Level --- </option>
-                                            <option value='in (1,2,3,4,5)' name='difficulty' class='form-control' selected> egal</option>
+                                            <option value='in (1,2,3,4)' name='difficulty' class='form-control' selected> egal</option>
                                             <option value=' = 1' name='difficulty' class='form-control'> easy</option>
                                             <option value='=2' name='difficulty' class='form-control'> intermediate</option>
                                             <option value='=3' name='difficulty' class='form-control'> hard</option>
                                             <option value='=4' name='difficulty' class='form-control'> crossfit</option>
-                                            <option value='=5' name='difficulty' class='form-control'> hanni</option>
+                                            <!-- <option value='=5' name='difficulty' class='form-control'> hanni</option> -->
                                         </select>
 
 
@@ -140,7 +140,7 @@ include('navbarWod.php');
 
                                         <div class="container-equipment">
                                             <h5 class="pt-3 pb-1 mt-3">EQUIPMENT:</h5>
-                                            <select class='mb-4' name='equipment' style="width:90%;">
+                                            <select multiple='multiple' class='mb-4' name='equipment[]' style="width:90%;">
 
                                                 <?php
 
@@ -169,7 +169,7 @@ include('navbarWod.php');
                     inner join equipment e3 on equSet.equiPart3 = e3.equipmentId
                     inner join equipment e4 on equSet.equiPart4 = e4.equipmentId
                     WHERE  ! COALESCE(equiPart5,'')
-                    ORDER BY `equiSetId` ASC";
+                    ORDER BY `equiSetId` ASC limit 10";
 
 
                                                 $result2 = mysqli_query($conn, $sql2);
@@ -185,12 +185,18 @@ include('navbarWod.php');
                                                     $e4 = $row['equiPart4'];
 
 
+
+                                                    if ($equiSetId == 1) {
+                                                        $checked = 'selected';
+                                                    } else {
+                                                        $checked = '';
+                                                    }
+
+
                                                     //echo "<option> $row[authorID] $row['firstname'] | $row ['lastname']</option>";
-                                                    echo "<option value= $equiSetId name= 'equipment' class='form-control'> $equiSetId $e1 $e2 $e3 $e4</option>";
+                                                    echo "<option value= $equiSetId $checked name= 'equipment' class='form-control'> $equiSetId $e1 $e2 $e3 $e4</option>";
                                                 }
                                                 echo "</select>";
-
-
 
                                                 ?>
                                             </select>
@@ -205,7 +211,7 @@ include('navbarWod.php');
                                             <!-- <input type="hidden" name="dayId" value="<?php echo $data['dayId'] ?>" /> -->
                                             <!-- <p><#?php echo $data['dayId'] ?></p> -->
 
-                                            <input class="buttonNew form-control btn btn-dark mt-4" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;" type="submit" name="submit" value="Wod generieren" style="width:90%;" />
+                                            <input class="button_bee form-control mt-4" type="submit" name="submit" value="Workout suchen" style="width:90%;" />
                                             <!-- 
                                     <a href="home.php" class="btn btn-outline-warning">Zurück</a> -->
                                         </div>
@@ -219,19 +225,19 @@ include('navbarWod.php');
                                 <h3 class="mt-2">Andere Filterkriterien</h3>
                                 <br>
                                 <!-- <input type="text" placeholder="Name des Wods" name="name" class="form-control"><br> -->
-                                <input class="form-control btn btn-secondary" type="submit" name="submit" value="Nach Wod-Namen suchen" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;" />
+                                <input class="form-control button_bee" type="submit" name="submit" value="Nach Workout-Namen suchen" />
 
                                 <input type="text" placeholder="Name des Wods" name="name" class="form-control" onkeyup="searchForWodName(this.value);">
 
 
                                 <hr>
-                                <input class="form-control btn btn-dark" type="submit" name="submit" value="nach User-Namen suchen" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;" />
+                                <input class="form-control button_bee" type="submit" name="submit" value="nach User-Namen suchen" />
                                 <input type="text" placeholder="Name Mitglied" name="userName" class="form-control" onkeyup="searchForUserName(this.value);"><br>
 
                                 <hr>
 
                                 <?php
-                                $wodId = 11;
+
 
                                 $res3 = mysqli_query($conn, "SELECT MAX(wodId) FROM wod");
                                 $userRow = mysqli_fetch_array($res3, MYSQLI_ASSOC);
@@ -242,7 +248,7 @@ include('navbarWod.php');
 
                                 ?>
 
-                                <a href="../workouts/singleWod.php?wodId=<?php echo $maxWod; ?>" class="form-control btn btn-dark mt-4" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;"> Überrascht mich!</a>
+                                <a href="../workouts/singleWod.php?wodId=<?php echo $maxWod; ?>" class="form-control button_bee mt-4"> Überrascht mich!</a>
 
 
                             </div>
@@ -269,9 +275,10 @@ include('navbarWod.php');
                         <p>Hier kannst du Feedback geben, wie dir ein Workout gefallen hat:
 
                         <ul>Verteile Sterne:
-                            <li> <strong>4 Sterne:</strong> Mein neues Lieblingsworkout!</li>
-                            <li> <strong>3 Sterne:</strong> gefällt mir!</li>
-                            <li> <strong>3 Sterne:</strong> nicht so ganz meins..</li>
+                            <li> <strong>5 Sterne:</strong> Mein neues Lieblingsworkout!</li>
+                            <li> <strong>4 Sterne:</strong> gefällt mir!</li>
+                            <li> <strong>3 Sterne:</strong> okay</li>
+                            <li> <strong>2 Sterne:</strong> nicht so ganz meins..</li>
                             <li> <strong>1 Stern:</strong> NEVER AGAIN!</li>
                         </ul>
 

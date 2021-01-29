@@ -2,7 +2,7 @@
 // Verbindung
 
 require_once '../config.php';
-
+include('funktionen.php');
 
 if ($_POST["suchbegriff"]) {
 
@@ -32,76 +32,27 @@ if ($_POST["suchbegriff"]) {
         $durationInMinutes = $fetch['durationInMinutes'];
         $difficulty = $fetch['difficulty'];
         $link = $fetch['link'];
-        $pic = '../images/icon/elefant.jpg';
-        $cat = 'secondary';
         $user = $fetch['userName'];
+        $cat = getColourDifficulty($difficulty);
+        $pic = getWodPicture($equiSetId);
+        $pic_style = getWodPictureStyle($equiSetId);
+        $stars = getStars($rating);
 
-        switch ($difficulty) {
-            case 'easy':
-                $cat = 'success';
-                break;
-            case 'intermediate':
-                $cat = 'warning';
-                break;
-            case 'hard':
-                $cat = 'danger';
-                break;
-            case 'crossfit':
-                $cat = 'primary';
-                break;
-            default:
-                $cat = 'secondary';
-        }
-
-        switch ($equiSetId) {
-            case 1:
-                $pic = '../images/icon/jumping-jacks.png';
-                $pic_style = "width: 158px; height: 195px";
-                break;
-            case 2:
-                $pic = '../images/icon/pull-up.png';
-                break;
-            case 3:
-                $pic = '../images/icon/boxjump.png';
-                break;
-            case 4:
-                $pic = '../images/icon/ringrows.png';
-                break;
-            case 5:
-                $pic = '../images/icon/dumbbell.png';
-                break;
-            case 6:
-                $pic = '../images/icon/snatch.png';
-                break;
-            case 7:
-                $pic = '../images/icon/ringrows.png';
-                break;
-            case 8:
-                $pic = '../images/icon/deadlift.png';
-                break;
-            case 9:
-                $pic = '../images/icon/wallballshot.png';
-                break;
-            case 10:
-                $pic = '../images/icon/DU.png';
-                break;
-            default:
-                $pic = '../images/icon/pig.jpg';
-                $pic_style = "width: 200px, height:200px";
-        }
 
 ?>
         <div class="card m-2 text-center" style="width:300px">
             <img class="card-img-top mx-auto" src=<?php echo $pic; ?> alt="category image" style="<?php echo $pic_style; ?>">
-            <div class="card-body bg-<?php echo $cat; ?>">
-                <h4 class="card-title"><?php echo $name; ?></h4>
+            <div class="card-body" style="background-color: <?php echo $cat; ?> ">
+                <h4 class="card-title text-dark"><?php echo $name; ?></h4>
                 <p class="card-text">Dauer: <?php echo $durationInMinutes; ?> Minuten</p>
                 <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
+                <h2><?php echo $stars; ?></h2>
+                <p><?php echo $rating; ?> </p>
                 <p class="card-text">von user <?php echo $user; ?> </p>
-                <p class="card-text">Rating:</p>
-                <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn btn-primary"> Zum Workout</a>
+                <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn button_bee"> Zum Workout</a>
             </div>
         </div>
+
 
 <?php
 

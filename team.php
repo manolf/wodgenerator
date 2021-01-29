@@ -43,7 +43,7 @@ include('navbar.php');
 
         <div class="col-lg-6 col-md-12 mb-5 d-md-flex justify-content-around">
             <div class="avatar mb-md-0 mb-4 mx-4">
-                <img src="./images/manu.png" class="rounded z-depth-1" alt="manu pic" style="width:256px;height:384px">
+                <img src="./images/manu_stencil.svg" class="rounded z-depth-1" alt="manu pic" style="width:256px;height:384px">
             </div>
             <div class="mx-4">
                 <h4 class="font-weight-bold mb-3 header-foto">FRONT- & BACKEND CODING</h4>

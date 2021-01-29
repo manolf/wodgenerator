@@ -3,27 +3,17 @@ ob_start();
 session_start();
 require_once '../config.php';
 
-// // if session is not set this will redirect to login page
-// if (!isset($_SESSION['admin']) && !isset($_SESSION['user']) && !isset($_SESSION['superadmin'])) {
-//     header("Location: index.php");
-//     exit;
-// }
-// if (isset($_SESSION["user"])) {
-//     header("Location: home.php");
-//     exit;
-// }
-// // select logged-in users details
+if (isset($_SESSION["user"])) {
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+    $userId = $_SESSION['user'];
+}
 
-// if (isset($_SESSION["admin"])) {
-
-//     $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['admin']);
-//     $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
-// }
-
-// if (isset($_SESSION["superadmin"])) {
-
-//     $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['superadmin']);
-//     $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+if (isset($_SESSION['access_token'])) {
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE oauth_uid=" . $_SESSION['id']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+    $userId = $userRow['userId'];
+}
 
 //NAVBAR
 include('../workouts/navbarWod.php');
@@ -64,7 +54,14 @@ if ($_GET['wodId']) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome - <?php echo $userRow['userEmail']; ?></title>
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <script src="https://cdn.tiny.cloud/1/fyga9b2vms5na1vvgr2ey9wn6ms9d7ucfg44hszp3i61u8ll/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea2',
+            placeholder: "Anzahl Wiederholungen, benötigte Zeit.. "
 
+        });
+    </script>
 </head>
 
 <body>
@@ -95,11 +92,11 @@ if ($_GET['wodId']) {
 
 
             <div class="mx-auto">
-                <h2 class="font-weight-bold pb-3 " Workoutdetails! </h2>
+                <h2 class="font-weight-bold pb-3 text-dark " Workoutdetails! </h2>
 
                     <div class="form-group">
 
-                        <h3 class="text-success"><?php echo $data['wodName'] ?></h3>
+                        <h3 class="text-secondary"><?php echo $data['wodName'] ?></h3>
 
                         <h5 class=''>
                             <?php echo $data['description'] ?>
@@ -116,15 +113,35 @@ if ($_GET['wodId']) {
 
                         <h5>Mit diesem Workout tust du folgenden Teilen deines Körpers etwas Gutes:<br><br> <strong> <?php echo $data['trainedParts'] ?> </strong> <br><br>Super, nur weiter so!</h5>
 
-                        <form action='wod.php' method='post'>
-                            <!-- <h5>Hurra, ich habe es geschafft!
-                  </h5> -->
-                            <input class='btn btn-outline-danger m-2' type='submit' name='insertWod' value='Workout absolviert' />
+                        <?php
+                        if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
 
-                            <input type="hidden" name="wodId" value="<?php echo $data['wodId'] ?>" />
-                            <input type="hidden" name="dayId" value="<?php echo $data2['dayId'] ?>" />
-                            <!-- <p><?php echo $data2['dayId'] ?></p> -->
-                        </form>
+                        ?>
+
+                            <hr>
+                            <form action='rating.php' method='post'>
+
+                                <label for="description" class="mt-3 text-secondary"> Kommentar zum Workout</label>
+                                <textarea class="form-control" id="mytextarea2" rows="3" name="comment"></textarea>
+
+                                <input type="hidden" name="wodId" value="<?php echo $data['wodId']; ?>" />
+
+
+                                <input class="btn button_bee" type='submit' name="submit" value="Workout in Kalender eintragen" style="width:90%;" />
+
+                            </form>
+
+
+
+
+                        <?php
+                        } else {
+
+                            echo "<a class='btn button_bee m-2' href='wod.php' >Workout absolviert</a> ";
+                        }
+
+                        ?>
+
                         <hr>
                         <h5>
 

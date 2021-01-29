@@ -1,5 +1,25 @@
 /*
 =============== 
+Variables
+===============<?php echo $pic; ?>
+*/
+
+:root {
+  --clr-manu: rgb(255, 196, 0);
+  --clr-header: #ffe354;
+  --clr-footer: #7d8b96;
+  --clr-easy: #c4e4cd;
+  --clr-medium: #cac55d;
+  --clr-hard: #ffc46a;
+  --clr-cf: #f3703a;
+
+  --clr-green: #008000;
+  --clr-border: black;
+  /* --clr-header: rgb(102, 102, 51); */
+}
+
+/*
+=============== 
 Global Styles
 ===============
 */
@@ -9,6 +29,14 @@ body {
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--clr-header);
+  font-weight: bold;
 }
 
 /* .card:hover {
@@ -31,7 +59,7 @@ body {
 
 .button_bee {
   background-color: black;
-  color: rgb(255, 196, 0);
+  color: var(--clr-header);
   font-weight: bold;
 }
 
@@ -41,14 +69,14 @@ body {
   ===============
   */
 .navbar {
-  background-color: rgb(255, 196, 0);
+  background-color: var(--clr-header);
   color: black;
 }
 
 nav {
   /* background-color: rgb(102, 102, 51) !important; */
   background-color: black;
-  color: rgb(255, 196, 0);
+  color: var(--clr-header);
   font-weight: bold;
 }
 
@@ -65,6 +93,48 @@ nav li a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/*
+=============== 
+ADMIN
+===============
+*/
+.square {
+  width: 200px;
+  height: 250px;
+  border: 1pt solid grey;
+  text-align: center;
+}
+
+.containerWod {
+  display: flex;
+  justify-content: space-between;
+}
+
+.easy {
+  background-color: var(--clr-easy);
+}
+
+.intermediate {
+  background-color: var(--clr-medium);
+}
+
+.hard {
+  background-color: var(--clr-hard);
+}
+
+.crossfit {
+  background-color: var(--clr-crossfit);
+}
+
+.hanni {
+  background-color: orange;
+}
+
+.header {
+  position: sticky;
+  top: 88px;
 }
 
 /*
@@ -169,11 +239,101 @@ nav li a {
 
 .container-footer {
   /* background-color: rgb(102, 102, 51) !important; */
-  background-color: rgb(153, 0, 0);
+  /* background-color: rgb(153, 0, 0); */
+  background-color: var(--clr-footer);
 }
 
 .links a {
   color: white;
+}
+
+/******************************
+  Rating
+  ******************************/
+
+.wrapper_rating {
+  border: 1pt solid var(--clr-green);
+  margin: 2%;
+}
+.container_rating {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rating_left {
+  width: 40%;
+}
+
+.rating_right {
+  width: 40%;
+}
+
+.rating {
+  float: left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #ddd;
+  text-shadow: 1px 1px #bbb, 2px 2px #666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rating > input:checked ~ label {
+  color: #f70;
+  text-shadow: 1px 1px #c60, 2px 2px #940, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340,
+    0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340,
+    0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.empty {
+  color: #ddd;
+  text-shadow: 1px 1px #bbb, 2px 2px #666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.filled {
+  color: #f70;
+  text-shadow: 1px 1px #c60, 2px 2px #940, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
 }
 
 /*
@@ -197,7 +357,7 @@ nav li a {
 }
 
 .header-foto {
-  color: rgb(102, 102, 51) !important;
+  color: --clr-header !important;
 }
 
 .warning2 {
@@ -236,7 +396,7 @@ nav li a {
 
 .container_single {
   display: flex;
-  border: 1pt single black;
+  border: 1pt single var(--clr-border);
 }
 
 /* .left {
@@ -245,8 +405,8 @@ nav li a {
 } */
 
 .right {
-  width: 40%;
-  border: 2pt solid olive;
+  width: 60%;
+  border: 2pt solid var(--clr-border);
   border-radius: 5px;
 }
 
@@ -259,7 +419,7 @@ nav li a {
 .container_wod {
   display: flex;
   justify-content: space-between;
-  border: 1pt solid green;
+  border: 1pt solid var(--clr-border);
   border-radius: 1%;
 }
 
@@ -275,8 +435,8 @@ nav li a {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  border: 1pt solid green;
-  border-radius: 1%;
+  /* border: 1pt solid green;
+  border-radius: 1%; */
 }
 
 /*
@@ -318,32 +478,10 @@ nav li a {
   }
 
   /*
-  Jumbotron start
-  */
-
-  .jumbotron {
-    background-size: 200% 100%;
-  }
-
-  .container-jumbo {
-    width: 100%;
-  }
-
-  .header-jumbo {
-    font-size: 1.2rem;
-    padding: 0;
-  }
-
-  .text-center {
-    width: 80%;
-    font-size: 0.9rem;
-  }
-
-  /*
   index
   */
 
-  #licht {
+  /* #licht {
     width: 480px;
     height: 304px;
   }
@@ -353,7 +491,6 @@ nav li a {
   }
 
   .container-day {
-    /* background: white; */
     width: 100%;
     border: none;
   }
@@ -370,50 +507,7 @@ nav li a {
   .right {
     width: 100%;
     border: none;
-  }
-
-  /*
-  WINDOW-STYLING START
-  ***/
-  .container {
-    padding: 0;
-    margin: 0;
-  }
-
-  .window {
-    width: 90px;
-    height: 90px;
-  }
-
-  .caro {
-    width: 90px !important;
-    height: 90px !important;
-  }
-
-  .window.clicked p {
-    color: white;
-    font-size: 10pt;
-    margin: 0.5rem;
-  }
-
-  .erst {
-    color: black;
-    position: absolute;
-    left: 5px;
-    top: 2px;
-  }
-
-  .wod {
-    color: black;
-    position: absolute;
-    left: 5px;
-    top: 15px;
-  }
-
-  /* Warnhinweis*/
-  .text-warn {
-    font-size: 1rem !important;
-  }
+  }  */
 
   /******************************
   FOOTER
@@ -466,64 +560,6 @@ nav li a {
     width: 405px;
     height: 200px;
   }
-
-  /***************************** 
-    Kästchen 24
-    ******************************/
-
-  #playground2 {
-    display: block;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    animation: 2s 1 slidein;
-    color: white;
-    font-size: 60px;
-    position: absolute;
-    top: 0px;
-    left: 30%;
-  }
-
-  #playground2:hover {
-    color: red;
-  }
-
-  #playground {
-    display: none;
-  }
-
-  #hanno24 {
-    width: 360px;
-    height: 701px;
-    position: absolute;
-    top: 570px;
-    left: 0;
-  }
-
-  #rudolfo {
-    width: 360px;
-    height: 232px;
-    position: absolute;
-    top: 35px;
-    left: 0;
-  }
-
-  #elftree {
-    width: 360px;
-    height: 280px;
-    position: absolute;
-    top: 290px;
-    left: 0;
-  }
-
-  #danke {
-    width: 360px;
-    height: 266px;
-    position: absolute;
-    top: 1300px;
-    left: 0;
-  }
 }
 
 @media (min-width: 501px) and (max-width: 800px) {
@@ -539,31 +575,6 @@ nav li a {
   }
 
   /*
-  Jumbotron start
-  */
-
-  .jumbotron {
-    background-size: 150% 80%;
-  }
-
-  .container-jumbo {
-    width: 100%;
-  }
-
-  .header-jumbo {
-    font-size: 1.2rem;
-    padding: 1;
-  }
-
-  .text-center {
-    width: 50%;
-    font-size: 1.2rem;
-  }
-  /*
-  Jumbotron end
-  */
-
-  /*
   index
   */
 
@@ -576,12 +587,11 @@ nav li a {
   day
   */
 
-  .container {
+  /* .container {
     border: none;
   }
 
   .container-day {
-    /* background: white; */
     width: 100%;
     border: none;
   }
@@ -598,7 +608,7 @@ nav li a {
   .wrapper {
     display: flex;
     flex-wrap: wrap;
-  }
+  } */
 
   /******************************
   FOOTER
@@ -640,64 +650,6 @@ nav li a {
     width: 100%;
     margin-left: 1rem;
   }
-
-  /***************************** 
-    Kästchen 24
-    ******************************/
-
-  #playground2 {
-    display: block;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    animation: 2s 1 slidein;
-    color: white;
-    font-size: 60px;
-    position: absolute;
-    top: 0px;
-    left: 30%;
-  }
-
-  #playground2:hover {
-    color: red;
-  }
-
-  #playground {
-    display: none;
-  }
-
-  #hanno24 {
-    width: 283px;
-    height: 552px;
-    position: absolute;
-    top: 0px;
-    left: 0;
-  }
-
-  #rudolfo {
-    width: 360px;
-    height: 232px;
-    position: absolute;
-    top: 35px;
-    left: 50%;
-  }
-
-  #elftree {
-    width: 360px;
-    height: 280px;
-    position: absolute;
-    top: 290px;
-    left: 30%;
-  }
-
-  #danke {
-    width: 212px;
-    height: 157px;
-    position: absolute;
-    top: 390px;
-    left: 70%;
-  }
 }
 
 @media (min-width: 801px) and (max-width: 1500px) {
@@ -713,35 +665,5 @@ nav li a {
 
   .secret {
     width: 100%;
-  }
-
-  #hanno24 {
-    width: 283px;
-    height: 552px;
-    left: 5%;
-  }
-
-  #rudolfo {
-    width: 466px;
-    height: 300px;
-  }
-
-  #elftree {
-    width: 370px;
-    height: 287px;
-    top: 260px;
-    left: 35%;
-  }
-
-  #playground {
-    font-size: 40px;
-    left: 35%;
-  }
-
-  #danke {
-    top: 320px;
-    left: 70%;
-    width: 243px;
-    height: 180px;
   }
 }

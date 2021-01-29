@@ -114,7 +114,7 @@ $loginURL = $gClient->createAuthUrl();
         <div class="row justify-content-center">
             <div class="col-md-6 col-offset-3" align="center">
 
-                <img src="../images/logo.png"><br><br>
+                <img src="../images/logo_colored.png" style="width:300px; height:300px;"><br><br>
 
 
                 <!-- register start -->
@@ -161,8 +161,8 @@ $loginURL = $gClient->createAuthUrl();
                     <hr />
 
 
-                    <button type="submit" class="btn btn-primary" name="btn-signup">Sign Up</button>
-                    <input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Log In With Google" class="btn btn-danger">
+                    <button type="submit" class="btn" name="btn-signup" style="background-color: black; color: rgb(255, 196, 0);">Sign Up</button>
+                    <input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Log In With Google" class="btn" style="background-color: black; color: rgb(255, 196, 0);">
                     <hr />
 
                     <a href="login.php">Log in Here...</a>

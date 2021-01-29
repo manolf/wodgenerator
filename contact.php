@@ -98,7 +98,7 @@ ob_start();
                         <label for="message">Leg los - die Zeilen gehören dir!</label>
                     </div>
 
-                    <button type="submit" class="btn ml-0 text-light" style="background-color:rgb(102, 102, 51)">Senden<i class=" fa fa-paper-plane ml-2" "></i></button>
+                    <button type="submit" class="btn btn-block ml-0 " style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;">Senden<i class=" fa fa-paper-plane ml-2" "></i></button>
 
                 </div>
                 <!--Grid column-->
