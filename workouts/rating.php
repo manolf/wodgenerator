@@ -2,9 +2,7 @@
 ob_start();
 session_start();
 require_once '../config.php';
-
-
-
+$previousPage = $_SERVER['HTTP_REFERER'];
 
 if (isset($_SESSION["user"])) {
     $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
@@ -75,7 +73,7 @@ if ($_POST) {
                     <form action="rating2.php" method="post">
                         <div class="container_rating">
                             <div class="rating_left">
-                                <fieldset class="rating">
+                                <fieldset class="rating ml-4">
                                     <legend>Dein Workout-Rating</legend>
                                     <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Super! Mein neues Lieblingsworkout!">5 stars</label>
                                     <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Sehr gut!">4 stars</label>
@@ -88,7 +86,7 @@ if ($_POST) {
                             <div class="rating_right">
 
                                 <fieldset class="freitext">
-                                    <legend>Zusätzliche Anmerkungen</legend>
+                                    <legend class="ml-4">Zusätzliche Anmerkungen</legend>
                                     <textarea name="anmerkung" class="md-textarea form-control" rows="3"></textarea>
                                 </fieldset>
                             </div>
@@ -98,20 +96,20 @@ if ($_POST) {
                         <!-- <input type="hidden" name="userId" value="<#?php echo $userId; ?>" /> -->
 
                         <div class="text-center mt-3 mb-3">
-                            <button class="btn" style="background-color: black; color: rgb(255, 196, 0);font-weight: bold;" type=submit>Rating abschicken</button>
-                            <button class="btn" style="background-color: grey; color: rgb(255, 196, 0);font-weight: bold;" type=submit>Weiter ohne Rating</button>
+                            <button class="btn button_bee" type=submit> Rating abschicken</button>
+                            <a class='btn button_bee m-2' href='../home.php'>Abbrechen</a>
+
                         </div>
                     </form>
 
                 </div>
 
     <?php
-                // header("refresh:2; url=../home.php");
-                // echo "<center>You will be redirected in 2 seconds.</center>";
-                //   echo "<center><a href='../admin.php'><button type='button'>Home</button></a></center>";
+
                 echo "</div>";
             } else {
-                echo "Super Leistung! und redirect";
+                echo "<h2 class='text-center'>Super Leistung! Bleib dran!</h2>";
+
                 header("refresh:2; url=../home.php");
             }
         } else {

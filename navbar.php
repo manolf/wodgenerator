@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,16 +14,16 @@
 
 
 
-    <nav class="navbar sticky-top navbar navbar-expand-sm" style="background-color: rgb(255, 196, 0); font-weight: bold;">
+    <nav class="navbar sticky-top navbar navbar-expand-sm" style="background-color: var(--clr-header);">
 
         <button class="navbar-toggler navbar-toggler-left btn-lg" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"><i class="fa fa-bars fa-lg"></i></span>
         </button>
 
         <div class="container-nav collapse navbar-collapse" id="navbarTogglerDemo02">
 
             <div class="navbar-left">
-                <img class="icon border" src="images/vector_logo_sw.svg" />
+                <img class="icon border" src="images/vector_logo_white_fill_bw.svg" />
 
             </div>
 
@@ -51,9 +50,6 @@
 
                 ?>
 
-                <li class="nav-item">
-                    <a class="nav-link " href="./diary/diary.php">tagebuch</a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link " href="team.php">team</a>
@@ -65,7 +61,7 @@
 
 
 
-                <li class="nav-item">
+                <li class="nav-item fadeout">
                     <a class="nav-link" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:black"><i class="fa fa-instagram"></i></a>
                 </li>
 
@@ -84,7 +80,7 @@
 
                 <div class="navbar-right">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item fadeout">
                             <?php
                             echo $userRow['userEmail'] . '&nbsp'; ?>
                         </li>
@@ -101,15 +97,9 @@
                             <ul class="navbar-nav">
 
                                 <li class="nav-item">
-                                    <a class="nav-link " href="./registration/login.php">login/signup</a>
+                                    <a class="nav-link " href="./registration/login.php">login</a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link " href="./registration/register.php">signup</a>
-                                </li> -->
-                                <!-- <div class="image">
-                        <#?php echo $userRow['userName']; ?> -->
-                                <!-- <img class="icon" src="images/icon/<#?php echo $userRow['foto']; ?>" /> -->
-                                <!-- </div> -->
+
                             </ul>
                         </div>
 

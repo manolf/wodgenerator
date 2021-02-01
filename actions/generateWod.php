@@ -16,7 +16,6 @@ if ($_POST) {
     //old: single select
     // $equiSetId = $_POST['equipment'];
 
-
     //new: multiselect
     $equiSetId = "";
 
@@ -34,7 +33,7 @@ if ($_POST) {
     $equiSetId = " in (" . substr_replace($equiSetId, "", -1) . ")";
 
 
-    $sql = "SELECT wod.*, AVG(rating) as 'rating' FROM wod
+    echo $sql = "SELECT wod.*, AVG(rating) as 'rating' FROM wod
     left join rating on rating.wodId = wod.wodId
     inner join equset on wod.equiSetId = equset.equiSetId
     WHERE difficulty $difficulty 
@@ -44,18 +43,16 @@ if ($_POST) {
     or equiPart3 $equiSetId )
     and durationInMinutes $durationInMinutes
     GROUP BY wod.wodId
+    limit 15
     ";
 
     $result = $conn->query($sql);
     echo $count = mysqli_num_rows($result);
 
-
-
 ?>
 
 
     <div class="container_genwod">
-        <!-- <div class="container row row-cols-md-2 row-cols-sm-3 row-cols-lg-4 row-col-xs-1 mx-auto"> -->
 
         <?php
 
@@ -77,37 +74,12 @@ if ($_POST) {
                 if ($rating == "") {
                     $rating = 0.001;
                 }
-                $cat = getColourDifficulty($difficulty);
-                $pic = getWodPicture($equiSetId);
-                $pic_style = getWodPictureStyle($equiSetId);
+                $cat = getBGColor($difficulty);
+                $picData = getPictureData($equiSetId);
+                $pic = $picData[0];
+                $pic_style = $picData[1];
                 $stars = getStars($rating);
-                // echo " -- nach holen der Variable --";
 
-                // switch ($rating) {
-                //     case ($rating < 1):
-                //         //$stars = "0";
-                //         $stars = "<span class='empty'>★ ★ ★ ★ ★</span>";
-                //         break;
-                //     case ($rating < 2):
-                //         // $stars = "1";
-                //         $stars = "<span class='filled'>★</span><span class='empty'> ★ ★ ★ ★</span> ";
-                //         break;
-                //     case (($rating >= 2) && ($rating < 3)):
-                //         // $stars = "2";
-                //         $stars = "<span class='filled'>★ ★</span><span class='empty'> ★ ★ ★</span> ";
-                //         break;
-                //     case (($rating >= 3) && ($rating < 4)):
-                //         $stars = "<span class='filled'>★ ★ ★</span><span class='empty'> ★ ★</span> ";
-                //         break;
-                //     case (($rating >= 4) && ($rating < 5)):
-                //         $stars = "<span class='filled'>★ ★ ★ ★</span><span class='empty'> ★</span> ";
-                //         break;
-                //     case ($rating >= 5):
-                //         $stars = "<span class='filled'>★ ★ ★ ★ ★ $rating</span>";
-                //         break;
-                //     default:
-                //         $stars = "<span class='empty'>★ ★ ★ ★ ★ $rating</span>";
-                // }
 
 
         ?>
@@ -121,7 +93,8 @@ if ($_POST) {
                         <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
                         <h2><?php echo $stars; ?></h2>
                         <!-- <p><#?php echo $rating; ?> </p> -->
-                        <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn button_bee"> Zum Workout</a>
+                        <a href="../workouts/wodDetail.php?wodId=<?php echo $wodId; ?>" class="btn button_bee"> Zum Workout</a>
+
                     </div>
                 </div>
 
@@ -132,9 +105,6 @@ if ($_POST) {
         } else {
 
             //echo "nur ein wod";
-            //exactly one workout 
-            // echo $data;
-            // echo $data['wodName'];
             $data = $result->fetch_assoc();
 
             $wodId = $data['wodId'];
@@ -146,9 +116,10 @@ if ($_POST) {
             $durationInMinutes = $data['durationInMinutes'];
             $difficulty = $data['difficulty'];
             $link = $data['link'];
-            $pic = getWodPicture($equiSetId);
-            $cat = getColourDifficulty($difficulty);
-            $pic_style = getWodPictureStyle($equiSetId);
+            $picData = getPictureData($equiSetId);
+            $pic = $picData[0];
+            $pic_style = $picData[1];
+            $cat = getBGColor($difficulty);
             $stars = getStars($rating);
 
 
@@ -161,7 +132,7 @@ if ($_POST) {
                     <p class="card-text">Dauer: <?php echo $durationInMinutes; ?> Minuten</p>
                     <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
                     <p class="card-text">Rating:</p>
-                    <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn btn-primary"> Zum Workout</a>
+                    <a href="../workouts/wodDetail.php?wodId=<?php echo $wodId; ?>" class="btn btn-primary"> Zum Workout</a>
                 </div>
             </div>
 

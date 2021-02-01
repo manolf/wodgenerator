@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 include('../workouts/navbarWod.php');
-// include('jumbotron.php');
 require_once '../config.php';
 
 if ($_POST) {
@@ -14,10 +13,27 @@ if ($_POST) {
     $message = $_POST['message'];
 
 
+    //Mailserver
+    // $to = "feedback@fitmithanno.fun";
+    // $subject = $subject;
+    // $txt = $message;
+
+    // // Always set content-type when sending HTML email
+    // $headers = "MIME-Version: 1.0" . "\r\n";
+    // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+    // // More headers
+    // $headers .= 'From: <webmaster@fitmithanno.fun>' . "\r\n";
+    // $headers .= 'Cc: myboss@example.com' . "\r\n";
+
+    // mail($to, $subject, $txt, $headers);
+
+
+
+
     $sql = "INSERT into messages (vorname, nachname, email, subject, message)  values ('$vorname', '$nachname','$email', '$subject','$message')";
 
 ?>
-
 
     <!DOCTYPE html>
     <html lang="en">

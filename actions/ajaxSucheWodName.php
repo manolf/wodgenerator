@@ -1,26 +1,25 @@
 <?php
-// Verbindung
 
 require_once '../config.php';
 include('funktionen.php');
+$previousPage = substr($_SERVER['HTTP_REFERER'], -8);
 
 if ($_POST["suchbegriff"]) {
 
-    $sql = "select * from wod
+    $sql = "select wod.*, AVG(rating) as 'rating' from wod
+	left join rating on rating.wodId = wod.wodId
 	inner join users on wod.userId = users.userId
-    WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')";
+    WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')
+    GROUP BY wod.wodId
+    ";
 
-    // $sql = "SELECT * FROM wod 
-    // WHERE wodName LIKE ('%" . mysqli_real_escape_string($conn, utf8_decode($_POST["suchbegriff"])) . "%')";
 
-    // Mysql Abfrage wird durchgeführt
     $result = mysqli_query($conn, $sql);
 
-    // Suchbegriff wird ausgegeben
+    // Suchbegriff 
     echo "Suche nach WorkoutName: " . $_POST["suchbegriff"] . "<br/><br/>";
     echo "<div class='container_genwod'>";
 
-    // Ergebnis wird ausgegeben mit Zeilenumbruch
     while ($fetch = mysqli_fetch_array($result)) {
 
         $wodId = $fetch['wodId'];
@@ -33,9 +32,15 @@ if ($_POST["suchbegriff"]) {
         $difficulty = $fetch['difficulty'];
         $link = $fetch['link'];
         $user = $fetch['userName'];
-        $cat = getColourDifficulty($difficulty);
-        $pic = getWodPicture($equiSetId);
-        $pic_style = getWodPictureStyle($equiSetId);
+        $rating = $fetch['rating'];
+        $cat = getBGColor($difficulty);
+        $picData = getPictureData($equiSetId);
+        $pic_style = $picData[1];
+        $pic = $picData[0];
+        if ($previousPage == "home.php") {
+            $pic = $picData[2];;
+        }
+        $pic_style = $picData[1];
         $stars = getStars($rating);
 
 
@@ -47,9 +52,9 @@ if ($_POST["suchbegriff"]) {
                 <p class="card-text">Dauer: <?php echo $durationInMinutes; ?> Minuten</p>
                 <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
                 <h2><?php echo $stars; ?></h2>
-                <p><?php echo $rating; ?> </p>
+                <!-- <p><#?php echo $rating; ?> </p> -->
                 <p class="card-text">von user <?php echo $user; ?> </p>
-                <a href="../workouts/singleWod.php?wodId=<?php echo $wodId; ?>" class="btn button_bee"> Zum Workout</a>
+                <a href="../workouts/wodDetail.php?wodId=<?php echo $wodId; ?>" class="btn button_bee"> Zum Workout</a>
             </div>
         </div>
 
@@ -61,15 +66,3 @@ if ($_POST["suchbegriff"]) {
     echo "</div>";
 }
 ?>
-
-<!-- 
-
-			echo "<br>Workout-Name: ";
-			echo utf8_encode($row->wodName);
-			echo "<br>Dauer in Minuten: ";
-			echo utf8_encode($row->durationInMinutes);
-			echo "<br> category: ";
-			echo utf8_encode($row->difficulty);
-
-
-			echo "<br/>";		 -->

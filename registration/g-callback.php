@@ -31,12 +31,6 @@ $_SESSION['familyName'] = $userData['familyName'];
 $_SESSION['givenName'] = $userData['givenName'];
 $name = ($userData['givenName'] . " " . $userData['familyName']);
 
-// header('Location: home.php');
-// exit();
-
-
-//try: check and write to database
-
 
 $res = mysqli_query($conn, "SELECT * FROM users WHERE userEmail='$email'");
 //$obj->read('users',array('useremail'=>$email));

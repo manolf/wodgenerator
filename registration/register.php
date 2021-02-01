@@ -117,8 +117,6 @@ $loginURL = $gClient->createAuthUrl();
                 <img src="../images/logo_colored.png" style="width:300px; height:300px;"><br><br>
 
 
-                <!-- register start -->
-
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
 
 
@@ -170,7 +168,6 @@ $loginURL = $gClient->createAuthUrl();
 
                 </form>
 
-                <!-- register end -->
 
             </div>
 

@@ -1,7 +1,5 @@
 <?php
 
-// include('./workouts/navbarWod.php');
-// include('jumbotron.php');
 
 ob_start();
 session_start();
@@ -57,28 +55,17 @@ include('navbar.php');
 
 
 
-                        <p>..hast du dich je gefragt, was die Nordpolbewohner außerhalb der Weihnachtssaison so treiben? <br>Wir wissen, was Rudi so tut. Aber was machen denn die Elfen? <br><br> <strong>Hanno</strong> hat seine neue Leidenschaft für Sport entdeckt und will jetzt auch unterm Jahr fleißig trainieren, weil: nach Weihnachten ist vor Weihnachten! </p>
-
-
-                        Um seiner neuen sportlichen Begeisterung den Weg zu ebnen gibt es nun folgende <strong> neue Features </strong> auf unserer Seite:
-                        <ul>
+                        <p><strong>..mit viel Schwung geht es weiter! </strong><br><br> Wir platzen vor Stolz: du befindest dich auf unserer brandneuen Homepage mit vielen neuen Extras, die dir dabei helfen sollen, deine Sportlichkeit zu unterstützen, zu dokumentieren und zu zelebrieren!
+                            <!-- <ul>
                             <li> <a href="./workouts/wod.php">Workoutgenerator</a></li>
-                        </ul>
+                        </ul> -->
+                            <br><br>
+                            Für eingeloggte UserInnen gibts außerdem ein
+                            Trainingstagebuch, die Möglichkeit, eigene Workouts zu erstellen und andere Workouts zu bewerten/raten. <br><br>
+                            Mit dabei ist natürlich wieder unser Held <strong>Hanno</strong>, der nun seiner neuen Leidenschaft auch unterm Jahr frönen will - mit dem einzigartigen<strong> Rudi</strong> als Trainer an seiner Seite!
 
-                        Hol dir dein maßgeschneidertes Wod! <br>
 
-                        <!-- <p> Sei dabei und begleite Hanno auf seinem sportlichen Weg durchs Jahr!</p> -->
-
-                        Für eingeloggte UserInnen planen wir außerdem ein
-                        <ul>
-                            <!-- <li> <a href="./workouts/wod.php">Workoutgenerator</a></li> -->
-                            <li><a href="./diary/diary.php">Trainingstagebuch.</a></li>
-                        </ul>
-
-                        Dies alles kannst du kostenlos nutzen!
-
-                        <!-- <a href="./registration/login.php" type="button" class="btn btn-primary btn-lg mt-4">LOGIN</a>
- -->
+                            <br><br><strong>Nun aber auf zu großen Taten!</strong> <br>Weil: nach Weihnachten ist vor Weihnachten!
 
 
                     </div>
@@ -86,19 +73,8 @@ include('navbar.php');
             </div>
 
         </section>
-        <!--Section: Content-->
     </div>
 
-
-    <!-- <div class="container-warning">
-        <section>
-
-            <div>
-                <img id="licht" src="./img/lichterkette.png" alt="radschlagender Hanno">
-            </div>
-
-        </section>
-    </div> -->
 
 
     <?php

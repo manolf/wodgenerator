@@ -40,38 +40,33 @@ include('navbarWod.php');
 
 <body>
 
-    <div class=" container my-5 z-depth-1 rounded border">
+    <!-- <div class="container my-5 z-depth-1 rounded border"> -->
+    <div class="container rounded border">
         <!--Section: Content-->
         <section class="dark-grey-text">
 
             <div>
-                <!-- <div class="col-md-7 mb-4">
 
-                    <div class="view">
-                        <img src='./images/hanno.JPG' alt="hanno" style="width: 475px; height: 564px" class="img-fluid rounded">
-                    </div>
-
-                </div> -->
                 <div>
                     <div>
 
                         <h3 class="font-weight-bold mb-4"> Nun wird es sportlich..</i> </h3>
 
                         <br>
-                        <p>Hier nun ein Überblick, was du alles machen kannst: </p>
+                        <p>Was kannst du alles machen? </p>
                         <h3>Workout wählen</h3>
-                        <p>Du hast Zugriff auf alle Workouts der Datenbank. Mit dem Workoutfilter kannst du nach folgenden Kriterien filtern: </p>
+                        <p>Du hast Zugriff auf alle Workouts der Datenbank. Du kannst nach folgenden Kriterien filtern: </p>
 
 
                         <li> <strong>Zeitdauer:</strong> Hier ist alles möglich zwischen extrakurz und zeitfüllend</li>
-                        <li> <strong>Level</strong> Hier gibt es die Kategorien easy, moderat, fortgeschritten und crossfit</li>
-                        <li> <strong>Equipment</strong> Du hast Lust auf ein bestimmtes Trainingsgerät wie Kettlebell, Hantel, Springschnur, etc..</li>
+                        <li> <strong>Level</strong> Hier gibt es die Kategorien <strong style="background-color: var(--clr-easy)">easy</strong> , <strong style="background-color: var(--clr-medium)">intermediate</strong>, <strong style="background-color: var(--clr-hard)">hard</strong> und <strong style="background-color: var(--clr-cf)">crossfit</strong>, achte hierbei auf die unterschiedliche Farbe!</li>
+                        <li> <strong>Equipment</strong> Du hast Lust auf ein bestimmtes Trainingsgerät wie Kettlebell, Hantel, Springschnur, etc..? Hier kannst du danach suchen - Mehrfachselektion mit STR-Shift ist möglich</li>
                         <li> <strong>zusätzliche Filter</strong> Du möchtest nach Workouts eines bestimmten Members oder nach Workoutnamen filtern?</li>
+                        <li> <strong>Zu faul zum Suchen?</strong> Ja - auch für dich haben wir etwas: Starte mit nur einem Klick zu deinem Überraschungsworkout! </li>
                         </ul>
 
                         <br><br>
 
-                        <h1>Workout-Generator</h1>
                         <div class="container_wod">
 
                             <div class="wod_left p-2">
@@ -173,7 +168,7 @@ include('navbarWod.php');
 
 
                                                 $result2 = mysqli_query($conn, $sql2);
-                                                echo $count = mysqli_num_rows($result2);
+                                                $count = mysqli_num_rows($result2);
 
                                                 // echo "<option> ----Equipment wählen ----- </option>";
                                                 while ($row = mysqli_fetch_array($result2)) {
@@ -248,7 +243,7 @@ include('navbarWod.php');
 
                                 ?>
 
-                                <a href="../workouts/singleWod.php?wodId=<?php echo $maxWod; ?>" class="form-control button_bee mt-4"> Überrascht mich!</a>
+                                <a href="../workouts/wodDetail.php?wodId=<?php echo $maxWod; ?>" class="form-control button_bee mt-4"> Überrascht mich!</a>
 
 
                             </div>
@@ -258,9 +253,9 @@ include('navbarWod.php');
                         <div id="ergebnis"></div>
 
                         <hr>
-                        <p>Als eingeloggter User kannst du übrigens unter <strong>myHanno</strong> noch folgende Features nutzen:</p>
+                        <p>Als eingeloggte/r User/in kannst du übrigens unter <strong class="bg-warning">myHanno</strong> noch folgende Features nutzen:</p>
 
-                        <strong>Absolvierte Workouts in deinen eigenen Kalender speichern</strong>
+                        <h6>Absolvierte Workouts in deinen eigenen <strong>Workoutkalender</strong> speichern</h6>
                         <p>Damit hast du einen guten Überblick über deine Sportlichkeit!</p>
 
                         <strong>Eigene Workouts erstellen</strong>
@@ -274,7 +269,9 @@ include('navbarWod.php');
                         <strong>Workouts raten</strong>
                         <p>Hier kannst du Feedback geben, wie dir ein Workout gefallen hat:
 
-                        <ul>Verteile Sterne:
+                        <h4>Verteile Sterne:</h4>
+                        <ul>
+
                             <li> <strong>5 Sterne:</strong> Mein neues Lieblingsworkout!</li>
                             <li> <strong>4 Sterne:</strong> gefällt mir!</li>
                             <li> <strong>3 Sterne:</strong> okay</li>

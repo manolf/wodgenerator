@@ -39,18 +39,6 @@ h4 {
   font-weight: bold;
 }
 
-/* .card:hover {
-  transform: scale(1.05);
-}
-.card {
-  margin: 20px 10px 20px 10px;
-  padding: 20px 20px 20px 20px;
-  transition: all 0.5s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 600px;
-} */
-
 .icon {
   width: 70px;
   height: 70px;
@@ -396,18 +384,29 @@ ADMIN
 
 .container_single {
   display: flex;
-  border: 1pt single var(--clr-border);
+  justify-content: space-between;
+  /* border: 1pt solid var(--clr-border); */
+  width: 80%;
 }
 
-/* .left {
+.top {
+  width: 80%;
+}
+
+.left {
   width: 40%;
-  border: 1pt single green;
-} */
+  /* border: 1pt solid green; */
+}
 
 .right {
-  width: 60%;
-  border: 2pt solid var(--clr-border);
+  width: 40%;
+  /* border: 2pt solid var(--clr-border); */
   border-radius: 5px;
+}
+
+.bottom {
+  width: 80%;
+  /* border: 2pt solid var(--clr-border); */
 }
 
 /*
@@ -441,12 +440,6 @@ ADMIN
 
 /*
   =============== 
-  ANIMATIONS - Slides 
-  ===============
-  */
-
-/*
-  =============== 
   MEDIA QUERIES
   ===============
   */
@@ -465,10 +458,6 @@ ADMIN
     justify-items: flex-start;
   }
 
-  /*   .container {
-      padding-left: 0;
-    } */
-
   /*
   Navbar
   */
@@ -477,37 +466,9 @@ ADMIN
     display: none;
   }
 
-  /*
-  index
-  */
-
-  /* #licht {
-    width: 480px;
-    height: 304px;
+  .fadeout {
+    display: none;
   }
-
-  .container {
-    border: none;
-  }
-
-  .container-day {
-    width: 100%;
-    border: none;
-  }
-
-  .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .left {
-    width: 100%;
-  }
-
-  .right {
-    width: 100%;
-    border: none;
-  }  */
 
   /******************************
   FOOTER
@@ -560,6 +521,58 @@ ADMIN
     width: 405px;
     height: 200px;
   }
+
+  /*
+  =============== 
+  Wod Generator
+  ===============
+  */
+  .container_wod {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: none;
+  }
+
+  .wod_left {
+    width: 100%;
+  }
+
+  .wod_right {
+    width: 100%;
+  }
+
+  /******************************
+  Rating
+  ******************************/
+
+  .wrapper_rating {
+    border: 1pt solid var(--clr-green);
+    margin: 2%;
+  }
+  .container_rating {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rating_left {
+    width: 100%;
+  }
+
+  .rating_right {
+    width: 100%;
+  }
+
+  .rating {
+    float: center;
+  }
+
+  /******************************
+  Home
+  ******************************/
+  #mytextarea {
+    width: 350px;
+  }
 }
 
 @media (min-width: 501px) and (max-width: 800px) {
@@ -574,14 +587,18 @@ ADMIN
     justify-content: center;
   }
 
+  .fadeout {
+    display: none;
+  }
+
   /*
   index
   */
 
-  #licht {
+  /* #licht {
     width: 480px;
     height: 304px;
-  }
+  } */
 
   /*
   day

@@ -27,11 +27,26 @@
                 <div class="col-md-4">
                     <ul class=" links list-unstyled d-flex justify-content-center mb-0 mt-2 ">
                         <li>
-                            <a class="mx-3" role="button" href="impressum.php">impressum</a>
+
+                            <?php
+                            if (
+                                (substr($_SERVER['REQUEST_URI'], -8) == 'home.php') ||
+                                (substr($_SERVER['REQUEST_URI'], -8) == 'ndex.php') ||
+                                (substr($_SERVER['REQUEST_URI'], -8) == 'team.php') ||
+                                (substr($_SERVER['REQUEST_URI'], -8) == 'tact.php') ||
+                                (substr($_SERVER['REQUEST_URI'], -8) == 'ssum.php')
+                            ) {
+
+                                echo " <a class='mx-3' role='button' href='impressum.php'>impressum</a> ";
+                            } else {
+                                echo " <a class='mx-3' role='button' href='../impressum.php'>impressum</a> ";
+                            }
+
+
+                            ?>
+
                         </li>
-                        <!-- <li>
-                            <a class="mx-3" role="button" href="login.php">admin</a>
-                        </li> -->
+
 
                     </ul>
                 </div>
@@ -39,16 +54,7 @@
 
                 <div class="col-md-4 footer-right">
                     <ul class="list-unstyled d-flex justify-content-end mb-0 mt-2">
-                        <!-- <li>
-                            <a class="mx-3" role="button"><i class="fa fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a class="mx-3" role="button"><i class="fa fa-instagram"></i></a>
-                        </li> -->
 
-                        <!-- <li>
-                            <a class="mx-3" role="button"><i class="fa fa-facebook-f"></i></a>
-                        </li> -->
                         <li>
                             <a class="mx-3" role="button" href="https://www.instagram.com/elf.hanno/" target="_blank" style="color:white"><i class="fa fa-instagram"></i></a>
                         </li>
@@ -59,13 +65,9 @@
             </div>
 
         </div>
-        <!-- Footer Elements -->
+
 
     </footer>
-    <!-- Footer -->
-
-
-
 
 
 </body>

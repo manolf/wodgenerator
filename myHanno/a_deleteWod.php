@@ -57,7 +57,7 @@ if ($_POST) {
         echo "<p><b>Successfully deleted!!</b></p>";
         header("refresh:2; url=admin.php");
         echo "You will be redirected in 2 seconds.<br>";
-        echo "<a href='.php'><button type='button'>Back</button></a>";
+        echo "<a href='admin.php'><button type='button'>Back</button></a>";
         echo "</div>";
     } else {
         echo "Error updating record : " . $conn->error;
