@@ -84,33 +84,33 @@ if ($_GET['wodId']) {
 
 </head>
 
-<body style="background-color:<?php echo $bgColor; ?>">
+<body ">
 
     <div class=" workoutwrapper mt-4">
 
-        <div class=" top mx-auto">
-            <h2 class="font-weight-bold pb-3 text-dark">Workoutdetails</h2>
-        </div>
-        <div class="container_single mx-auto">
+    <div class=" top mx-auto">
+        <h2 class="font-weight-bold pb-3 text-dark">Workoutdetails</h2>
+    </div>
+    <div class="container_single mx-auto">
 
-            <div class=" left">
-
-                <div class=" mx-auto ">
-
-
-                    <h3 class=" text-secondary"><?php echo $data['wodName'] ?></h3>
-
-                    <hr>
+        <div class="left" style="border: 1pt solid <?php echo $bgColor; ?>; border-radius: 2%;">
+            <h3 class=" text-light" style="background-color:<?php echo $bgColor; ?>"> <span class="ml-4" style="background-color:<?php echo $bgColor; ?>"><?php echo $data['wodName'] ?></span></h3>
+            <div class="ml-4 ">
 
 
-                    <h6 class='text-dark'>
-                        <?php echo $data['description'] ?>
 
-                    </h6>
 
-                    <h6><a target="_blank" href=" <?php echo $data['link']; ?>"> Link zusätzliche Infos </a></h6>
+                <hr>
 
-                    <!-- <#?php
+
+                <h6 class='text-dark'>
+                    <?php echo $data['description'] ?>
+
+                </h6>
+
+                <h6><a target="_blank" href=" <?php echo $data['link']; ?>"> Link zusätzliche Infos </a></h6>
+
+                <!-- <#?php
                     if ($data['link'] != '') {
                         echo ('<strong>Zusätzliche Infos: </strong> <a href=' . $data['link'] . ' > </a>');
                     } else {
@@ -118,35 +118,35 @@ if ($_GET['wodId']) {
                     }
                     ?> -->
 
-                    <br>
-                    <h6><strong>Zeitaufwand:</strong> <?php echo $data['durationInMinutes'] ?> Minuten</h6>
+                <br>
+                <h6><strong>Zeitaufwand:</strong> <?php echo $data['durationInMinutes'] ?> Minuten</h6>
 
-                    <h6> <strong>Trainierte Körperpartien:</strong> <br>
-                        <?php echo $data['trainedParts'] ?>
-                    </h6>
+                <h6> <strong>Trainierte Körperpartien:</strong> <br>
+                    <?php echo $data['trainedParts'] ?>
+                </h6>
 
-                    <h6>
-                        zur Verfügung gestellt von <a href="<?php echo $data['insta'] ?>" target="_blank"><?php echo $data['userName'] ?></a>
-                    </h6>
+                <h6>
+                    zur Verfügung gestellt von <a href="<?php echo $data['insta'] ?>" target="_blank"><?php echo $data['userName'] ?></a>
+                </h6>
 
-                    <hr>
+                <hr>
 
 
 
-                </div>
             </div>
+        </div>
 
-            <div class="right">
+        <div class="right">
 
-                <div class="mx-auto ">
+            <div class="mx-auto ">
 
 
 
-                    <section class="dark-grey-text ">
+                <section class="dark-grey-text ">
 
-                        <img class="card-img-top mx-auto" src=<?php echo $picCol; ?> alt="category image">
+                    <img class="card-img-top mx-auto" src=<?php echo $picCol; ?> alt="category image">
 
-                        <!-- <div class="col-md-5 mb-4">
+                    <!-- <div class="col-md-5 mb-4">
                         <div class="view">
                             <img src='../images/hanno.JPG' alt="elfPic" class="mt-4 rounded" style="width:300px;">
                         </div>
@@ -159,103 +159,103 @@ if ($_GET['wodId']) {
 
 
 
-                    </section>
-                </div>
+                </section>
             </div>
-
-
-
-
         </div>
 
-        <div class="bottom mx-auto">
 
 
-            <h5 class="text-center">Aktuelles Rating: <?php echo $starG; ?></h5>
-            <!-- <p><?php echo $data['rating'] ?></p> -->
+
+    </div>
+
+    <div class="bottom mx-auto">
 
 
-            <?php
+        <h5 class="text-center">Aktuelles Rating: <?php echo $starG; ?></h5>
+        <!-- <p><?php echo $data['rating'] ?></p> -->
 
-            $sql2 = "SELECT rating.*, users.userName, users.insta FROM wod 
+
+        <?php
+
+        $sql2 = "SELECT rating.*, users.userName, users.insta FROM wod 
                                 inner join rating on rating.wodId = wod.wodId
                                 inner join users on users.userId = rating.userId
                                 WHERE wod.wodId = $wodId ORDER BY wod.wodId ASC";
 
 
-            $result2 = $conn->query($sql2);
+        $result2 = $conn->query($sql2);
 
-            $conn->close();
+        $conn->close();
 
-            $count = mysqli_num_rows($result2);
-            if ($count == 0) {
-                // echo "oh nein...";
-                "es sieht so aus, als gäbe es noch kein Rating";
+        $count = mysqli_num_rows($result2);
+        if ($count == 0) {
+            // echo "oh nein...";
+            "es sieht so aus, als gäbe es noch kein Rating";
+        }
+
+
+        if ($count >= 1) {
+
+            // echo "<h4 class='text-dark'>UserRatings</h4>";
+            echo "<details class='text-dark font-weight-bold text-center mt-3'>";
+            while ($fetch = mysqli_fetch_array($result2)) {
+
+
+                $eRating = $fetch['rating'];
+                $starE = getStars($eRating);
+        ?>
+                <hr>
+                <p><?php echo $fetch['userName'] ?> : <?php echo $starE; ?> </p>
+
+                <p><?php echo $fetch['ratingText'] ?></p>
+
+
+        <?php
             }
+            echo "</details>";
+        }
 
+        ?>
 
-            if ($count >= 1) {
-
-                // echo "<h4 class='text-dark'>UserRatings</h4>";
-                echo "<details class='text-dark font-weight-bold text-center mt-3'>";
-                while ($fetch = mysqli_fetch_array($result2)) {
-
-
-                    $eRating = $fetch['rating'];
-                    $starE = getStars($eRating);
-            ?>
-                    <hr>
-                    <p><?php echo $fetch['userName'] ?> : <?php echo $starE; ?> </p>
-
-                    <p><?php echo $fetch['ratingText'] ?></p>
-
-
-            <?php
-                }
-                echo "</details>";
-            }
-
-            ?>
-
-            <!-- <h4> WORKOUT</h4>
+        <!-- <h4> WORKOUT</h4>
             <p>als eingeloggter User kannst du zusätzliche Notizen zum Workout abspeichern</p> -->
 
 
-            <?php
-            if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
+        <?php
+        if (isset($_SESSION["user"]) || isset($_SESSION["access_token"])) {
 
-            ?>
-                <form action='rating.php' method='post'>
+        ?>
+            <form action='rating.php' method='post'>
 
-                    <label for="description" class="mt-3 text-secondary"> Notizen zum Workout</label>
-                    <textarea class="form-control" id="mytextarea2" rows="3" name="comment" placeholder="Tagesverfassung, Anzahl Wiederholungen, benötigte Zeit.." style="background-color: 'white';"></textarea>
+                <label for="description" class="mt-3 text-secondary"> Notizen zum Workout</label>
+                <textarea class="form-control" id="mytextarea2" rows="3" name="comment" placeholder="Tagesverfassung, Anzahl Wiederholungen, benötigte Zeit.." style="background-color: 'white';"></textarea>
 
-                    <input type="hidden" name="wodId" value="<?php echo $data['wodId']; ?>" />
+                <input type="hidden" name="wodId" value="<?php echo $data['wodId']; ?>" />
 
-                    <div class="d-flex justify-content mt-2 mb-2">
-                        <input class="btn button_bee  mr-1" type='submit' name="submit" value="Speichern" style="width:50%;" />
-                        <a class='btn button_bee text-center' style="width:50%;" href='../home.php'>Zurück</a>
+                <div class="d-flex justify-content mt-2 mb-2">
+                    <input class="btn button_bee  mr-1" type='submit' name="submit" value="Speichern" style="width:50%;" />
+                    <a class='btn button_bee text-center' style="width:50%;" href='../home.php'>Zurück</a>
 
-                    </div>
+                </div>
 
-                </form>
-
-
+            </form>
 
 
-            <?php
-            } else {
 
-                echo "<p class='mt-3 p-2 bg-light'> <span class='text-danger'><strong>Achtung!</strong> </span> Nur als <strong>eingeloggte/r User/in </strong> kannst du absolvierte Workouts mit Notizen in deinem Kalender speichern</p>";
-                echo "<div class= 'd-flex justify-content-center'>";
-                echo "<a class='btn button_bee m-2' href='../registration/login.php' >Zum Login</a> ";
-                echo "<a class='btn button_bee m-2' href='wod.php' >Zurück</a> ";
-                echo "</div>";
-            }
 
-            ?>
+        <?php
+        } else {
 
-        </div>
+            echo "<p class='mt-3 p-2 bg-light'> <span class='text-danger'><strong>Achtung!</strong> </span> Nur als <strong>eingeloggte/r User/in </strong> kannst du absolvierte Workouts mit Notizen in deinem Kalender speichern</p>";
+            echo "<div class= 'd-flex justify-content-center'>";
+            echo "<a class='btn button_bee m-2' href='../registration/login.php' >Zum Login</a> ";
+            echo "<a class='btn button_bee m-2' href='wod.php' >Zurück</a> ";
+            echo "</div>";
+        }
+
+        ?>
+
+    </div>
 
     </div>
     <?php

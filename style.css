@@ -29,6 +29,18 @@ body {
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   margin: 0;
+  /* font-family: felt-tip-roman, sans-serif;
+  font-style: normal;
+  font-weight: 400; */
+}
+
+.roman {
+  /* font-family: felt-tip-roman, sans-serif;
+  font-style: bold;
+  font-weight: 800; */
+  font-family: "Architects Daughter", cursive;
+  font-style: bold;
+  font-weight: 800;
 }
 
 h1,

@@ -1,23 +1,3 @@
-<?php
-require_once 'config.php';
-
-ob_start();
-session_start();
-
-if (isset($_SESSION["user"])) {
-    $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=" . $_SESSION['user']);
-    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
-}
-
-if (isset($_SESSION['access_token'])) {
-    $res = mysqli_query($conn, "SELECT * FROM users WHERE oauth_uid=" . $_SESSION['id']);
-    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
-}
-
-include('navbar.php');
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +26,7 @@ include('navbar.php');
 
             </div>
 
-            <form action="./actions/createMessage.php" method="POST">
+            <form action="createMessage.php" method="POST">
 
                 <div>
 
@@ -119,9 +99,7 @@ include('navbar.php');
 
         </div>
 
-        <?php
-        include('footer.php');
-        ?>
+
 </body>
 
 </html>

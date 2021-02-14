@@ -50,7 +50,7 @@ include('navbarWod.php');
                 <div>
                     <div>
 
-                        <h3 class="font-weight-bold mb-4"> Nun wird es sportlich..</i> </h3>
+                        <h3 class="font-weight-bold mb-4 mt-4"> Nun wird es sportlich..</i> </h3>
 
                         <br>
                         <p>Was kannst du alles machen? </p>
@@ -253,7 +253,7 @@ include('navbarWod.php');
                         <div id="ergebnis"></div>
 
                         <hr>
-                        <p>Als eingeloggte/r User/in kannst du übrigens unter <strong class="bg-warning">myHanno</strong> noch folgende Features nutzen:</p>
+                        <p>Als eingeloggte/r User/in kannst du übrigens unter <strong class="p-2" style="background-color: var(--clr-header)">myHanno</strong> noch folgende Features nutzen:</p>
 
                         <h6>Absolvierte Workouts in deinen eigenen <strong>Workoutkalender</strong> speichern</h6>
                         <p>Damit hast du einen guten Überblick über deine Sportlichkeit!</p>

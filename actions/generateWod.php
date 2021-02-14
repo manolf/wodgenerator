@@ -33,9 +33,9 @@ if ($_POST) {
     $equiSetId = " in (" . substr_replace($equiSetId, "", -1) . ")";
 
 
-    echo $sql = "SELECT wod.*, AVG(rating) as 'rating' FROM wod
+    $sql = "SELECT wod.*, AVG(rating) as 'rating' FROM wod
     left join rating on rating.wodId = wod.wodId
-    inner join equset on wod.equiSetId = equset.equiSetId
+    inner join equSet on wod.equiSetId = equSet.equiSetId
     WHERE difficulty $difficulty 
     and (wod.equiSetId $equiSetId
     or equiPart1 $equiSetId
@@ -47,7 +47,7 @@ if ($_POST) {
     ";
 
     $result = $conn->query($sql);
-    echo $count = mysqli_num_rows($result);
+    $count = mysqli_num_rows($result);
 
 ?>
 
@@ -104,40 +104,34 @@ if ($_POST) {
             }
         } else {
 
-            //echo "nur ein wod";
-            $data = $result->fetch_assoc();
-
-            $wodId = $data['wodId'];
-            $name = $data['wodName'];
-            $equipment = $data['equipment'];
-            $equiSetId = $data['equiSetId'];
-            $trainedParts = $data['trainedParts'];
-            $description = $data['description'];
-            $durationInMinutes = $data['durationInMinutes'];
-            $difficulty = $data['difficulty'];
-            $link = $data['link'];
-            $picData = getPictureData($equiSetId);
-            $pic = $picData[0];
-            $pic_style = $picData[1];
-            $cat = getBGColor($difficulty);
-            $stars = getStars($rating);
-
-
-
             ?>
-            <div class="card m-2 text-center" style="width:300px">
-                <img class="card-img-top mx-auto" src=<?php echo $pic; ?> alt="category image" style="<?php echo $pic_style; ?>">
-                <div class="card-body bg-<?php echo $cat; ?>">
-                    <h4 class="card-title"><?php echo $name; ?></h4>
-                    <p class="card-text">Dauer: <?php echo $durationInMinutes; ?> Minuten</p>
-                    <p class="card-text">Kategorie: <?php echo $difficulty; ?></p>
-                    <p class="card-text">Rating:</p>
-                    <a href="../workouts/wodDetail.php?wodId=<?php echo $wodId; ?>" class="btn btn-primary"> Zum Workout</a>
-                </div>
+            <div class="text-center mx-auto mt-4 mb-4 p-4 rounded" style="border: 1pt solid var(--clr-header);">
+                <h3>Oh nein!! </h3><br>
+
+                <img src="../images/rudolf_error.png" style="width:338px; height:166px;">
+                <h5>Es sieht so aus, als gäbe es kein Wod für deine gewünschte Auswahl..</h5>
+                <h5 class="mt-3"><strong>Bitte probier folgendes:</strong>
+                    <ul class="mt-3">
+                        <h5>Ändere die Kategorie: trau dich! </h5>
+                        <h5>Darfs ein bisserl mehr/weniger sein: Ändere die Workout-Minuten! </h5>
+                        <h5>Probier neues Equipment aus!</h5>
+                    </ul>
+                    <a href='../workouts/wod.php' class='btn button_bee mt-3 mb-3'> Ok, ich versuchs nochmal! </a>
+
+                </h5>
+                <!-- header("refresh:2; ../workouts/wod.php"); -->
+
             </div>
+
+
+
 
         <?php
         }
+        // else {
+        //     echo "oh nein!! <br>es sieht so aus, als gäbe es kein Wod für deine gewünschte Auswahl..";
+        //     header("Location: wod.php");
+        // }
 
         ?>
 

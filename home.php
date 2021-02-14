@@ -214,7 +214,7 @@ include('navbar.php');
                                                 inner join equipment e3 on equSet.equiPart3 = e3.equipmentId
                                                 inner join equipment e4 on equSet.equiPart4 = e4.equipmentId
                                                 WHERE  ! COALESCE(equiPart5,'')
-                                                ORDER BY `equiSetId` ASC";
+                                                ORDER BY `equiSetId` ASC limit 10";
 
 
                                         $result2 = mysqli_query($conn, $sql2);

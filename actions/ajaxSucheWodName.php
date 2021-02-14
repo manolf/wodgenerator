@@ -33,6 +33,9 @@ if ($_POST["suchbegriff"]) {
         $link = $fetch['link'];
         $user = $fetch['userName'];
         $rating = $fetch['rating'];
+        if ($rating == "") {
+            $rating = 0.001;
+        }
         $cat = getBGColor($difficulty);
         $picData = getPictureData($equiSetId);
         $pic_style = $picData[1];
